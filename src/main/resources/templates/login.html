@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>login</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min-4.3.1/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/util.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="js/jquery/jquery-3.4.1.js"></script>
+
+</head>
+<body>
+	<div class="container-login100"
+		style="background-image: url(&#39;images/login_bg_image.jpg&#39;);">
+		<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+			<form class="login100-form validate-form needs-validation" action="userlogin"
+				method="post" id="loginform" name="loginform">
+				<span class="login100-form-title p-b-37"> Bisa khadayte </span>
+				<div class="wrap-input100 validate-input m-b-20"
+					data-validate="Enter username or email">
+					<input class="input100" type="text" name="username" id="username"
+						placeholder="username or email"> <span
+						class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input m-b-25"
+					data-validate="Enter password">
+					<input class="input100" type="password" name="password" id="password"
+						placeholder="password"> <span class="focus-input100"></span>
+				</div>
+				<div class="container-login100-form-btn">
+					<input type=button class="login100-form-btn" value="Sign In" id="signin">
+				</div>
+
+			</form>
+			<div class="container-login100-form-btn">
+					<a>Forgot password</a>
+				</div>
+			
+			<div th:text="${errorMsg}"></div>
+		</div>
+	</div>
+</body>
+</html>

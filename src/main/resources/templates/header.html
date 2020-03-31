@@ -1,0 +1,18 @@
+
+<div th:fargment="header">
+	<div id="mySidenav" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<a href="#"> <img src="images/groom.jpg" width="60" height="60"	class="d-inline-block align-top" alt=""></a>
+		<span th:if="${user.isAdmin}"><a href="createuser">Create User</a> </span>
+		<a href="home">Home</a>
+		<a href="editviewUser">View profile</a> 
+		<a href="#">Contact</a>
+		<a href="logout">logout</a>
+	</div>
+	<nav class="navbar navbar-light bg-dark">
+		<a class="navbar-brand" href="#" onclick="openNav()"> <img
+			src="images/groom.jpg" width="30" height="30"
+			class="d-inline-block align-top" alt=""> <span th:text="${user.firstName}"></span>
+		</a>
+	</nav>
+</div>
