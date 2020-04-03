@@ -1,7 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function(event) {
 	
-	$("#signin").click(function(){
+	$("#signinbtn").click(function(){
 		submitLogin();
 	});
 	
