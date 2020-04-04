@@ -19,13 +19,13 @@ public interface CreateUserService {
 
 	void updateUser(User user, HttpSession session);
 
-	void uploadFile(User user, String path, MultipartFile file);
+	void uploadFile(User user, MultipartFile file);
 	
-	List<String> getImagesFile(User user, String path);
+	List<String> getImagesFile(User user);
 	
-	void generatePdf(User user,String filePath,String pdfPath);
+	void generatePdf(User user);
 	
-	String generateTemplate(User user,String filePath);
+	String generateTemplate(User user);
 	
 	void sendmail() ;
 	

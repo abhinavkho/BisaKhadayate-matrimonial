@@ -15,6 +15,9 @@ import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -32,6 +35,9 @@ public class CreateUserServiceImpl implements CreateUserService {
 	
 	@Autowired
 	UserDao userDao;
+	
+	@Autowired
+	JavaMailSender javaMailSender;
 	
 	@Override
 	@Transactional
@@ -68,21 +74,21 @@ public class CreateUserServiceImpl implements CreateUserService {
 	}
 
 	@Override
-	public void uploadFile(User user, String filePath,MultipartFile file) {
+	public void uploadFile(User user,MultipartFile file) {
 
 		  byte[] bytes;
 		  String fileName = file.getOriginalFilename();
 		
 		  try {
 				bytes = file.getBytes();
-				
-				File tmpDir = new File(filePath);
-				tmpDir.delete();
+				File tmpDir = new ClassPathResource("/static").getFile();
+				String path =tmpDir.getAbsolutePath()+"\\userImage\\"+user.getId()+"\\"+user.getFirstName()+user.getLastName();
+				 tmpDir = new File(path);
 			    if(!tmpDir.exists())
 			    {
 			    	tmpDir.mkdirs();
 			    }
-				Path pathObj = Paths.get(filePath+"\\"+fileName);
+				Path pathObj = Paths.get(tmpDir.getAbsolutePath()+"\\"+fileName);
 		        Files.write(pathObj, bytes);
 		        
 			} catch (IOException e) {
@@ -94,45 +100,57 @@ public class CreateUserServiceImpl implements CreateUserService {
 
 
 	@Override
-	public List<String> getImagesFile(User user, String filePath) {
+	public List<String> getImagesFile(User user) {
 		List<String> fileNameList = new ArrayList<String>();
-		File folder = new File(filePath);
-		File[] listOfFiles = folder.listFiles();
-		String path = System.getProperty("user.home");
-		String userFilePath = "userImage\\" + user.getId() + "\\" + user.getFirstName() + ""+ user.getLastName();
-		if(listOfFiles!=null) {
-			for (int i = 0; i < listOfFiles.length; i++) {
-				if (listOfFiles[i].isFile()) {
-					fileNameList.add(userFilePath + "\\" + listOfFiles[i].getName());
+		try {
+			File tmpDir = new ClassPathResource("/static").getFile();
+			String path =tmpDir.getAbsolutePath()+"\\userImage\\"+user.getId()+"\\"+user.getFirstName()+user.getLastName();
+			File folder = new File(path);
+			File[] listOfFiles = folder.listFiles();
+			String userFilePath = "userImage/" + user.getId() + "/" + user.getFirstName() + ""+ user.getLastName();
+			if(listOfFiles!=null) {
+				for (int i = 0; i < listOfFiles.length; i++) {
+					if (listOfFiles[i].isFile()) {
+						fileNameList.add(userFilePath + "/" + listOfFiles[i].getName());
+					}
 				}
 			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
 		return fileNameList;
 	}
 
 	@Override
-	public void generatePdf(User user, String filePath, String pdfPath) {
+	public void generatePdf(User user) {
 		
 		Document document = new Document();
+		String pdfPath ="";
 		try {
-			File tmpDir = new File(pdfPath);
+			File tmpDir = new ClassPathResource("/static").getFile();
+			 pdfPath =tmpDir.getAbsolutePath()+"\\pdf";
+			 tmpDir = new File(pdfPath);
 			if (!tmpDir.exists()) {
 				tmpDir.mkdirs();
 			}
 			PdfWriter writer = PdfWriter.getInstance(document,
-					new FileOutputStream(pdfPath + "" + user.getFirstName() + "_" + user.getLastName() + ".pdf"));
+					new FileOutputStream(pdfPath + "\\" + user.getFirstName()  + user.getLastName() + ".pdf"));
 			document.open();
 			XMLWorkerHelper worker = XMLWorkerHelper.getInstance();
-			String template = generateTemplate(user, filePath);
+			String template = generateTemplate(user);
 			worker.parseXHtml(writer, document, new StringReader(template));
 
-			File folder = new File(filePath);
+			tmpDir = new ClassPathResource("/static").getFile();
+			String imagePath =tmpDir.getAbsolutePath()+"\\userImage\\"+user.getId()+"\\"+user.getFirstName()+user.getLastName();
+			File folder = new File(imagePath);
 			File[] listOfFiles = folder.listFiles();
 			if (listOfFiles != null) {
 				for (int i = 0; i < listOfFiles.length; i++) {
 					if (listOfFiles[i].isFile()) {
 						try {
-						Image img = Image.getInstance(filePath + "\\" + listOfFiles[i].getName());
+						Image img = Image.getInstance(imagePath + "\\" + listOfFiles[i].getName());
 						img.scaleAbsolute(498f, 498f);
 						document.add(img);
 						}catch(Exception e) {
@@ -141,7 +159,6 @@ public class CreateUserServiceImpl implements CreateUserService {
 					}
 				}
 			}
-
 			document.close();
 			writer.close();
 		} catch (Exception e) {
@@ -151,7 +168,7 @@ public class CreateUserServiceImpl implements CreateUserService {
 	}
 
 	@Override
-	public String generateTemplate(User user , String filePath) {
+	public String generateTemplate(User user) {
 		// TODO Auto-generated method stub
 		StringBuilder template = new StringBuilder();
 		template.append("<head>\r\n" + 
@@ -235,14 +252,17 @@ public class CreateUserServiceImpl implements CreateUserService {
 				"					</table>\r\n" + 
 				"					\r\n" + 
 				"				</div>	");
-		
-		
 		template.append("</body>");
 		return template.toString();
 	}
 
 	@Override
 	public void sendmail()  {
+		SimpleMailMessage message =new SimpleMailMessage();
+		message.setTo("ab9khoti@gmail.com");
+		message.setSubject("Test");
+		message.setText("test mail");
+		javaMailSender.send(message);
 		
 	}
 

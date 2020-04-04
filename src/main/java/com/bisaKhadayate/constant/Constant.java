@@ -18,8 +18,4 @@ public interface Constant {
 	
 	public final static String  EDIT_UESR_DETAILS = "edituserdetail";
 	
-	public final static String UPLOADED_IMAGE_FOLDER = "static\\userImage\\";
-	
-	public final static String PDF_FOLDER = "static\\pdf\\";
-	
 }

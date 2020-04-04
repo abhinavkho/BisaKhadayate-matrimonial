@@ -1,5 +1,6 @@
 package com.bisaKhadayate.controller;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,8 +47,7 @@ public class UserController implements Constant {
 	{
 		User user =(User)request.getSession().getAttribute("userDetails");
 		ModelAndView mv=new ModelAndView();
-		String filePath= UPLOADED_IMAGE_FOLDER+""+user.getId()+"\\"+user.getFirstName()+""+user.getLastName();
-		mv.addObject("filesName",createUserService.getImagesFile(user, filePath));
+		mv.addObject("filesName",createUserService.getImagesFile(user));
 		mv.addObject(user);
 		mv.setViewName(CREATE_USER);
 		return mv;
@@ -82,8 +83,7 @@ public class UserController implements Constant {
 	{
 		User user = (User) request.getSession().getAttribute("userDetails");
 		ModelAndView mv=new ModelAndView();
-		String filePath= UPLOADED_IMAGE_FOLDER+""+user.getId()+"\\"+user.getFirstName()+""+user.getLastName();
-		mv.addObject("filesName",createUserService.getImagesFile(user, filePath));
+		mv.addObject("filesName",createUserService.getImagesFile(user));
 		mv.setViewName(EDIT_UESR_DETAILS);
 		mv.addObject("user", user );
 		mv.addObject("gender",Character.toString(user.getGender()));
@@ -107,9 +107,8 @@ public class UserController implements Constant {
 	  {
 		  User user =(User)session.getAttribute("userDetails");
 		  ModelAndView mv =new ModelAndView();
-		  String filePath= UPLOADED_IMAGE_FOLDER+""+user.getId()+"\\"+user.getFirstName()+""+user.getLastName();
-		  createUserService.uploadFile(user, filePath, file);
-		  mv.addObject("filesName",createUserService.getImagesFile(user, filePath));
+		  createUserService.uploadFile(user, file);
+		  mv.addObject("filesName",createUserService.getImagesFile(user));
 		  mv.addObject("user", user);
 		  mv.addObject("gender", Character.toString(user.getGender()));
 		  mv.setViewName(EDIT_UESR_DETAILS);
@@ -136,8 +135,7 @@ public class UserController implements Constant {
 		{
 			Optional<User> userOptional=userService.getUser(id);
 			User user=userOptional.get();
-			String filePath= UPLOADED_IMAGE_FOLDER+""+user.getId()+"\\"+user.getFirstName()+""+user.getLastName();
-			user.setFileNameList(createUserService.getImagesFile(user, filePath));
+			user.setFileNameList(createUserService.getImagesFile(user));
 			return user;
 		}
 	  
@@ -146,16 +144,7 @@ public class UserController implements Constant {
 	  @ResponseBody
 		public String email(@PathVariable Integer id)
 		{
-		/*
-		 * Optional<User> userOptional=userService.getUser(id); User
-		 * user=userOptional.get(); String filePath=
-		 * UPLOADED_IMAGE_FOLDER+""+user.getId()+"\\"+user.getFirstName()+""+user.
-		 * getLastName(); List<String>
-		 * fileNamesList=createUserService.getImagesFile(user, filePath);
-		 * createUserService.generatePdf(user,filePath,PDF_FOLDER); try {
-		 * createUserService.sendmail(); } catch (MessagingException e) { // TODO
-		 * Auto-generated catch block e.printStackTrace(); }
-		 */
+		createUserService.sendmail();
 			return null;
 		}
 	 
@@ -165,14 +154,15 @@ public class UserController implements Constant {
 		{
 			Optional<User> userOptional=userService.getUser(id);
 			User user=userOptional.get();
-			String imageFilePath= UPLOADED_IMAGE_FOLDER+""+user.getId()+"\\"+user.getFirstName()+""+user.getLastName();
-			createUserService.generatePdf(user,imageFilePath,PDF_FOLDER);
+			createUserService.generatePdf(user);
 			response.setContentType("application/pdf");  
 			PrintWriter out = response.getWriter();  
-			String filename = user.getFirstName()+"_"+user.getLastName()+".pdf";   
+			String filename = user.getFirstName()+user.getLastName()+".pdf";   
 			response.setContentType("APPLICATION/OCTET-STREAM");   
-			response.setHeader("Content-Disposition","attachment; filename=\"" + filename + "\"");   
-			FileInputStream fileInputStream = new FileInputStream(PDF_FOLDER + filename);  
+			response.setHeader("Content-Disposition","attachment; filename=\"" + filename + "\""); 
+			File tmpDir = new ClassPathResource("/static").getFile();
+			String pdfPath =tmpDir.getAbsolutePath()+"\\pdf";
+			FileInputStream fileInputStream = new FileInputStream(pdfPath+"\\" + filename);  
 			int i;   
 			while ((i=fileInputStream.read()) != -1) {  
 			out.write(i);   
