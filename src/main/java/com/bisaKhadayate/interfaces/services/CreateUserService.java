@@ -27,7 +27,7 @@ public interface CreateUserService {
 	
 	String generateTemplate(User user);
 	
-	void sendmail() ;
+	String sendmail() ;
 	
 	List<Map<String,Object>> searchFilterResult(Character gender,boolean isActive , String firstName , String lastName ,String caste , String gotra );
 

@@ -11,13 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -257,13 +259,23 @@ public class CreateUserServiceImpl implements CreateUserService {
 	}
 
 	@Override
-	public void sendmail()  {
-		SimpleMailMessage message =new SimpleMailMessage();
-		message.setTo("ab9khoti@gmail.com");
-		message.setSubject("Test");
-		message.setText("test mail");
-		javaMailSender.send(message);
-		
+	public String sendmail()  {
+		 MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+		 try {
+		 MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+		 
+         mimeMessageHelper.setSubject("Test");
+         mimeMessageHelper.setFrom(new InternetAddress("ab9khoti@gmail.com","abhianv "));
+         mimeMessageHelper.setTo("ab9khoti@gmail.com");
+         mimeMessageHelper.setText("test");
+         javaMailSender.send(mimeMessageHelper.getMimeMessage());
+		 }catch(Exception e) {
+			 e.printStackTrace();
+			 return "Not able to send email ";
+		 }
+		 return "Mail has send successfully";
+
+        
 	}
 
 	@Override

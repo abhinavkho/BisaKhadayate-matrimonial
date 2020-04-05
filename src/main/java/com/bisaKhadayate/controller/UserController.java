@@ -144,8 +144,7 @@ public class UserController implements Constant {
 	  @ResponseBody
 		public String email(@PathVariable Integer id)
 		{
-		createUserService.sendmail();
-			return null;
+		  return createUserService.sendmail();
 		}
 	 
 	  @GetMapping(value="download")

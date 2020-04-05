@@ -30,7 +30,7 @@ function loadFullProfile(id)
 				$("#"+key+"_mdl").text(result[key]);
 			}
 			
-			$("#fullprofilemodal").modal();
+			
 			
 			if(result.fileNameList.length!=0){
 				$('#userimages').text("");
@@ -45,6 +45,7 @@ function loadFullProfile(id)
             $("#inputhiddenUserId").val(result['id']);
             $('#download').text("");
             $("#download").prepend("<a href=\"download?id="+result['id']+"\" id=\"downloaduserdata\" >Download</a>");
+            $("#fullprofilemodal").modal();
 		},
 		error: function (jqXHR, textStatus, errorThrown)
 	    {
@@ -61,7 +62,12 @@ function email()
 	 $.ajax({
 			url : "email/"+id,
 			type: "POST",
-			success : function(result) {},
+			success : function(result) {
+				$('#fullprofilemodal').modal('hide');
+				$("#messageModalBody").text("");
+				$("#messageModalBody").text(result);
+				$("#messageModal").modal();
+			},
 			error: function (jqXHR, textStatus, errorThrown)
 		    {
 		 
