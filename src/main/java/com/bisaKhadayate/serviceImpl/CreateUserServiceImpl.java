@@ -283,6 +283,20 @@ public class CreateUserServiceImpl implements CreateUserService {
 		// TODO Auto-generated method stub
 		return userDao.searchFilterResult( gender, isActive ,  firstName ,  lastName , caste ,  gotra );
 	}
+
+	@Override
+	public void deleteFile(String filePath) {
+
+		File tmpDir;
+		try {
+			tmpDir = new ClassPathResource("/static").getFile();
+			String path =tmpDir.getAbsolutePath()+"\\"+filePath.replace("/","\\");
+			File file = new File(path);
+			file.delete();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 		
 
 }

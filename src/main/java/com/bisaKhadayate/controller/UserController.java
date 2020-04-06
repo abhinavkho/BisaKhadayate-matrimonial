@@ -184,4 +184,18 @@ public class UserController implements Constant {
 			return mv;
 		}
 	  
+	  
+	  @RequestMapping(value="deletephoto" , method=RequestMethod.POST)
+	  public ModelAndView  deletePhoto(@RequestParam("picname") String filePath,HttpSession session)
+	  {
+		  User user =(User)session.getAttribute("userDetails");
+		  ModelAndView mv =new ModelAndView();
+		  createUserService.deleteFile(filePath);
+		  mv.addObject("filesName",createUserService.getImagesFile(user));
+		  mv.addObject("user", user);
+		  mv.addObject("gender", Character.toString(user.getGender()));
+		  mv.setViewName(EDIT_UESR_DETAILS);
+		  return mv;
+	  }
+	  
 }

@@ -28,12 +28,16 @@
 				</div>
 				<br>
 			</form>
+			<form id="deletephoto" method="post" action="deletephoto">
+				<input type="hidden" name="picname" id="picname">
+			</form>
 
 			<input type="button" class=" btn btn-primary" id="submitphoto"	value="Upload">
 			<br>
-			 <div th:each="fileName : ${filesName}"> 
-				 <img th:src="@{${fileName}}" width="120" height="120" class="userpic">
-			 </div>
+			<div th:each="fileName : ${filesName}">
+					<span class="close" th:onclick="|showCross('@{${fileName}}')|"> X</span> 
+					<img th:src="@{${fileName}}" width="120" height="120" class="userpic">
+			</div>
 		</div>
 		<div class="column middle">
 		

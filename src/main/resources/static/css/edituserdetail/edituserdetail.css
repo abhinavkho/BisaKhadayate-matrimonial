@@ -82,3 +82,14 @@ background-color: rebeccapurple;
     height: 280px;
 	
 }
+
+.close{
+	background-color: gray;
+	position: relative;
+	top:20px;
+	right:6px;
+}
+
+
+
+

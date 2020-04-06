@@ -43,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				
 			}
 			if(!($("#editform")[0][i].id=="Update" || $("#editform")[0][i].name=="gender")){
-				console.log($("#editform")[0][i].id);
 			userDetails[$("#editform")[0][i].id]=$("#"+$("#editform")[0][i].id).val();
 			}
 		}
@@ -105,7 +104,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		  
 	  });
 
-	
-	
-
 });
+
+
+function showCross(file){
+	  $("#picname").val(file);
+	  $("#deletephoto").submit();
+	  
+}

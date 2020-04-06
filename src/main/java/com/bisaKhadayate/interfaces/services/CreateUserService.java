@@ -30,5 +30,7 @@ public interface CreateUserService {
 	String sendmail() ;
 	
 	List<Map<String,Object>> searchFilterResult(Character gender,boolean isActive , String firstName , String lastName ,String caste , String gotra );
+	
+	void deleteFile(String filePath);
 
 }
