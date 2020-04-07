@@ -161,7 +161,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 					$("#successmsg").text("");
 					$("#successmsg").text(result);
 					$("#successmsgmodal").modal();
-					window.location.href="home";
 				},
 				error: function (jqXHR, textStatus, errorThrown)
 			    {

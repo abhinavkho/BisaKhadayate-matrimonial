@@ -116,7 +116,7 @@ public class UserController implements Constant {
 	  }
 	  
 	  
-	  @GetMapping(value="searchpage")
+	  @PostMapping(value="searchpage")
 		public ModelAndView searchResult(@RequestParam Character gender,HttpServletRequest request)
 		{
 			User userdetails = (User) request.getSession().getAttribute("userDetails");

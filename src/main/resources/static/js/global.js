@@ -1,8 +1,8 @@
 
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-}
+document.addEventListener("DOMContentLoaded", function(event) {
 
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-}
+var headerDetails=$("#mainheader").html();
+$("#mainheader").html("");
+$("#newheader").html(headerDetails);
+
+});

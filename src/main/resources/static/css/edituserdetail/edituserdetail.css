@@ -72,13 +72,14 @@ background-color: rebeccapurple;
 #fileupload{
     border: 2px solid rebeccapurple;
     border-radius: 5px;
+    width: 100%;
 }
 
 
 .userpic{
     padding-top: 20px;
     border-radius: 5px;
-    width : 280px;
+    width : 100%;
     height: 280px;
 	
 }

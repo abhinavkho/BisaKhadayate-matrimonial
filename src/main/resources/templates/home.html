@@ -7,18 +7,14 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/home/home.css">
 <script type="text/javascript" src="js/home/home.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="js/jquery/jquery-3.4.1.js"></script>
 </head>
 <body>
-	<div th:replace="header"></div>
+	<span id="newheader"></span>
+	<span th:replace="header"></span>
 	<div class="container-login100" id="main-container">
-		<div class="col-md-3">
-			<a href="searchpage?gender=f"><img src="images/bride.jpg" alt="Avatar"
-				class="avtar" ></a>
-		</div>
-		<div class="col-md-3">
-			<a href="searchpage?gender=m"><img src="images/groom.jpg" alt="Avatar"
-				class="avtar" ></a>
-		</div>
+		
 	</div>
 </body>
 </html>

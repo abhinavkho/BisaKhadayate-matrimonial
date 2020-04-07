@@ -9,17 +9,20 @@
 <script type="text/javascript" src="js/jquery/jquery-3.4.1.js"></script>
 <link rel="stylesheet" type="text/css"	href="css/font-awesome.min/font-awesome.min.css">
 <script type="text/javascript" src="js/bootstrap.min/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
 
 </head>
 <body>
-	<div>
-		<span th:replace="header"></span> <br> <br>
-	</div>
+	<span id="newheader"></span>
+	<span th:replace="header"></span>
+	<br>
+	<br>
+
 	<div class="row">
 		<div class="column left">
 			<span id="filterbar">
 				<form method="post" action="searchFilterResult" >
-					<div id="filterheader">Search filter</div><br>
+					<div class="sideheader">Search filter</div><br>
 					<div class="form-group">
 						<input type="text" class="form-control" id="firstname"
 							placeholder="First name" name="firstName">
@@ -84,7 +87,7 @@
 			</span>
 		</div>
 		<div class="column right">
-			<h2>Advertisement</h2>
+			<h2 class="sideheader" >Advertisement</h2>
 		</div>
 	</div>
 	

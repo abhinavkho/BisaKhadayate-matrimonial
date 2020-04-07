@@ -1,174 +1,154 @@
 <!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="ISO-8859-1">
 <title>Create user</title>
 <link rel="stylesheet" type="text/css" href="css/createuser/createuser.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/home/home.css">
 <script type="text/javascript" src="js/createuser/createuser.js"></script>
+<link rel="stylesheet" type="text/css"	href="css/bootstrap.min-4.3.1/bootstrap.min.css">
 <script type="text/javascript" src="js/jquery/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="js/bootstrap.min/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
 </head>
-<body background="images/userbg.jpg" >
-	<div id="mySidenav" class="sidenav">
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<a href="#"> <img src="images/groom.jpg" width="60" height="60"	class="d-inline-block align-top" alt=""></a>
-		<span th:if="${user.isAdmin}"><a href="createuser">Create User</a> </span>
-		<a href="home">Home</a>
-		<a href="editviewUser">View profile</a> 
-		<a href="#">Contact</a>
-		<a href="logout">logout</a>
-	</div>
-<nav class="navbar navbar-light bg-dark">
-	<a href="#"><img src="images/groom.jpg" alt="Avatar" class="usercreateheader" onclick="openNav()" href="#" ></a>
-</nav>
-		<div class="wrapper wrapper--w680">
-			<div class="card card-4">
-				<div class="card-body">
+<body>
+	<span id="newheader"></span>
+	<span th:replace="header"></span><br><br>  
+    
+	<div id="formdiv">
 					<h2 class="title">Create User</h2>
 					<form method="POST" id="createuserform">
-						<div class="row row-space">
-							<div class="col-2">
-								<div class="input-group">
-									<label class="label">first name <span class="red">*</span></label> <input
-										class="input--style-4" type="text" name="firstName" id="firstName"><span class="red" id="firstName_err"></span>
-								</div>
-							</div>
-							<div class="col-2">
-								<div class="input-group">
-									<label class="label">last name <span class="red">*</span></label> <input
-										class="input--style-4" type="text" name="lastName" id="lastName"><span class="red" id="lastName_err"></span>
-								</div>
-							</div>
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="firstName">first name  <span class="red">*</span></label>
+							 <input	class="form-control fieldui" type="text" name="firstName" id="firstName"><span class="red" id="firstName_err"></span>
 						</div>
-						
-						<div class="row row-space">
-							<div class="col-2">
-								<div class="input-group">
-									<label class="label">Email <span class="red">*</span></label> <input
-										class="input--style-4" type="email" name="emailId" id="emailId"><span class="red" id="emailId_err"></span>
-								</div>
-							</div>
-							<div class="col-2">
-								<div class="input-group">
-									<label class="label">Phone Number</label> <input
-										class="input--style-4" type="text" name="contactNumber" id="contactNumber">
-								</div>
-							</div>
+						<div class="form-group col-md-6">
+							<label for="lastName">last name  <span class="red">*</span> </label> 
+							 <input	class="form-control fieldui" type="text" name="lastName" id="lastName"><span class="red" id="lastName_err"></span>
 						</div>
-						
-						<div class="row row-space">
-							<div class="col-2">
-								<div class="input-group">
-									<label class="label">Username <span class="red">*</span></label> <input
-										class="input--style-4" type="text" name="userId" id="userId"><span class="red" id="userId_err"></span>
-								</div>
-							</div>
-							<div class="col-2">
-								<div class="input-group">
-									<label class="label">Height</label> <input
-										class="input--style-4" type="text" name="height" id="height">
-								</div>
-							</div>
+					</div>
+
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="emailId">Email  <span class="red">*</span> </label> 
+							<input	class="form-control fieldui" type="email" name="emailId" id="emailId"><span class="red" id="emailId_err"></span>
 						</div>
-						
-						<div class="row row-space">
-							<div class="col-2">
-								<div class="input-group">
-									<label class="label">Birthday <span class="red">*</span></label>
-									<div class="input-group-icon">
-										<input class="input--style-4" type="date"	name="dob" id="dob"> <span class="red" id="dob_err"></span>
-									</div>
-								</div>
+						<div class="form-group col-md-6">
+							<label for="contactNumber">Phone Number </label> 
+							<input	class="form-control fieldui" type="text" name="contactNumber" id="contactNumber">
+						</div>
+					</div>
+					
+					
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="userId">Username  <span class="red">*</span> </label> 
+							<input	class="form-control fieldui" type="text" name="userId" id="userId"><span class="red" id="userId_err"></span>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="height">Height </label> 
+							<input	class="form-control fieldui" type="text" name="height" id="height">
+						</div>
+					</div>
+
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="dob">Birthday <span class="red">*</span>
+							</label> <input class="form-control fieldui" type="date" name="dob"
+								id="dob"> <span class="red" id="dob_err"></span>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="height">Gender </label>
+							<div class="form-check">
+								<input class="form-check-input gender" type="radio" name="gender"  id="male" value="M" checked>
+								 <label class="form-check-label" for="male"> Male </label>
 							</div>
-							<div class="col-2">
-								<div class="input-group">
-									<label class="label">Gender</label>
-									<div class="p-t-10">
-										<label class="radio-container m-r-45">Male <input
-											type="radio"  name="gender" id="male" class="gender" value="M"> <span
-											class="checkmark" ></span>
-										</label> <label class="radio-container">Female <input
-											type="radio" name="gender" id="female" class="gender" value="F"> <span class="checkmark"></span>
-										</label>
-									</div>
-								</div>
+							<div class="form-check">
+								<input class="form-check-input gender"  type="radio" name="gender" id="female" value="F" >
+								 <label	class="form-check-label" for="female"> female </label>
 							</div>
 						</div>
-						
-						<div class="row row-space">
-							<div class="col-2">
-								<div class="input-group">
-									<label class="label">Colour</label> <input
-										class="input--style-4" type="text" name="colour" id="colour"  >
-								</div>
-							</div>
-							<div class="col-2">
-								<div class="input-group">
-									<label class="label">Caste</label> <input
-										class="input--style-4" type="text" name="caste" id="caste">
-								</div>
-							</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="colour">Colour </label> <input
+								class="form-control fieldui" type="text" name="colour" id="colour">
 						</div>
-						
-						<div class="row row-space">
-							<div class="col-2">
-								<div class="input-group">
-									<label class="label">Birth place</label> <input
-										class="input--style-4" type="text" name="placeOfBirth" id="placeOfBirth">
-								</div>
-							</div>
-							<div class="col-2">
-								<div class="input-group">
-									<label class="label">Birth time</label> <input
-										class="input--style-4" type="time" name="time" id="time">
-								</div>
-							</div>
+						<div class="form-group col-md-6">
+							<label for="caste">Caste </label> <input
+								class="form-control fieldui" type="text" name="caste" id="caste">
 						</div>
-						
-						<div class="input-group">
-							<label class="label">Gotra</label>
-							<select class="gotra" id="gotra" name="gotra">
-								<option></option>
-								<option>Subject 1</option>
-								<option>Subject 2</option>
-								<option>Subject 3</option>
-							</select>
+					</div>
+					
+					
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="placeOfBirth">Birth place </label> <input
+								class="form-control fieldui"  type="text" name="placeOfBirth" id="placeOfBirth">
 						</div>
-						
-						<div class="input-group">
-							<label class="label">Current Address</label>
-                            <textarea class="txtarea input--style-4" id="currentAddress" name="currentAddress" ></textarea>
+						<div class="form-group col-md-6">
+							<label for="time">Birth time </label> <input
+								class="form-control fieldui" type="time" name="time" id="time">
 						</div>
-						<div class="input-group">
-							<label class="label">Parmanent Address</label>
-                            <textarea class="txtarea input--style-4" id="permanentAddress" name="permanentAddress" ></textarea>
-						</div>
-						
-						<div class="input-group">
-							<label class="label">Education</label>
-                            <textarea class="txtarea input--style-4" id="highestEducation" name="highestEducation" ></textarea>
-						</div>
-						
-						<div class="input-group">
-							<label class="label">Ocupation</label>
-                            <textarea class="txtarea input--style-4" id="occupation" name="occupation" ></textarea>
-						</div>
-						
-						<div class="input-group">
-							<label class="label">Family detail</label>
-                            <textarea class="txtarea input--style-4" id="familyDetails" name="familyDetails" ></textarea>
-						</div>
-						
-						<div class="p-t-15">
-							<input type="button" class="btnsubmit"  disabled id="submituser" value="Submit">
-						</div>
-					</form>
+					</div>
+
+
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<label for="gotra">Gotra</label> <select class="gotra" id="gotra"
+							name="gotra">
+							<option></option>
+							<option>Subject 1</option>
+							<option>Subject 2</option>
+							<option>Subject 3</option>
+						</select>
+					</div>
+				</div>
+
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label class="currentAddress">Current Address</label>
+					<textarea class="txtarea form-control" id="currentAddress"
+						name="currentAddress"></textarea>
 				</div>
 			</div>
-		</div>
-		
-		<div class="modal fade" id="successmsgmodal" tabindex="-1"
+			
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label class="permanentAddress">Parmanent Address</label>
+					<textarea class="txtarea form-control" id="permanentAddress" name="permanentAddress" ></textarea>
+				</div>
+			</div>
+			
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label class="highestEducation">Education</label>
+					<textarea class="txtarea form-control" id="highestEducation" name="highestEducation" ></textarea>
+				</div>
+			</div>
+			
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label class="occupation">Ocupation</label>
+					<textarea class="txtarea form-control" id="occupation" name="occupation" ></textarea>
+				</div>
+			</div>
+			
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label class="familyDetails">Family detail</label>
+					<textarea class="txtarea form-control" id="familyDetails" name="familyDetails" ></textarea>
+				</div>
+			</div>
+			<input type="button" class="btn btn-primary btnsubmit" disabled id="submituser" value="Submit" >
+		</form>
+	</div>
+
+	<div class="modal fade" id="successmsgmodal" tabindex="-1"
 		role="dialog" aria-labelledby="exampleModalCenterTitle"
 		aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
@@ -180,12 +160,11 @@
 					</button>
 				</div>
 				<div class="modal-body" id="modalbody">
-						<span id="successmsg"></span>
+					<span id="successmsg"></span>
 					<div class="modal-footer"></div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>

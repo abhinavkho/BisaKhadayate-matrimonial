@@ -13,9 +13,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		$("#agenumber").text($("#age").val());
 	});
 	
-	
+	w3.includeHTML();
 
 });
+
+
 
 function loadFullProfile(id)
 {
