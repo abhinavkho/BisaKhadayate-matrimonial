@@ -42,3 +42,12 @@
 .red {
     color: red;
 }
+
+#footerdiv{
+    background-color: black;
+}
+
+.footertext{
+	color: white;
+	font: italic bold 12px/30px Georgia, serif;	
+}
