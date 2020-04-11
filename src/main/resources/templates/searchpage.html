@@ -22,7 +22,7 @@
 	<div class="row">
 		<div class="column left">
 			<span id="filterbar">
-				<form method="post" action="searchFilterResult" >
+				<form method="post" action="searchFilterResult" class="resultbox shadow-sm p-3 mb-5 bg-blue rounded" >
 					<div class="sideheader">Search filter</div><br>
 					<div class="form-group">
 						<input type="text" class="form-control" id="firstname"
@@ -67,7 +67,7 @@
 		<div class="column middle">
 			<span th:each="data, iterstat: ${userDetail}">
 			<span th:with="id=${data.get('id')}"></span>
-				<table style="width: 100%" class="resultbox">
+				<table style="width: 100%" class="resultbox shadow-sm p-3 mb-5 bg-blue rounded">
 					<tr>
 						<td rowspan="5"><img src="images/groom.jpg"	alt="Italian Trulli" class="image_set" th:onclick="|loadFullProfile('${data.get('id')}')|" ><input type="hidden" id="userid" th:value="${data.get('id')}"></td>
 						<td><span th:text="${data.get('firstName')}"> </span> <span
@@ -84,11 +84,25 @@
 						<td>Gotra : <span th:text="${data.get('gotra')}"></span></td>
 					</tr>
 				</table>
-				<hr>
 			</span>
 		</div>
 		<div class="column right">
-			<h2 class="sideheader" >Advertisement</h2>
+			<h2 class="sideheader">Advertisement</h2>
+			<marquee behavior="scroll" direction="down" onmouseover="this.stop();" onmouseout="this.start();">
+				<span th:each="i :${#numbers.sequence( 1, 5)}" >
+					<table>
+						<tbody>
+							<tr>
+								<td><img alt="" class="d-inline-block align-top searchaddverimg"
+									src="images/groom.jpg"></td>
+							</tr>
+							<tr>
+								<td>bjhdkfj</td>
+							</tr>
+						</tbody>
+					</table>
+				</span>
+				</marquee>
 		</div>
 	</div>
 	

@@ -198,4 +198,14 @@ public class UserController implements Constant {
 		  return mv;
 	  }
 	  
+	  
+	  @GetMapping(value="contactus")
+		public ModelAndView contactus(HttpServletRequest request)
+		{
+			User userdetails = (User) request.getSession().getAttribute("userDetails");
+			ModelAndView mv=new ModelAndView();
+			mv.setViewName(CONTACT_US);
+			mv.addObject("user", userdetails );
+			return mv;
+		}
 }

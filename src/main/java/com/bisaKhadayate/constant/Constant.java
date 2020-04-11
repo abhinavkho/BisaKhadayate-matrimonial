@@ -18,4 +18,6 @@ public interface Constant {
 	
 	public final static String  EDIT_UESR_DETAILS = "edituserdetail";
 	
+	public final static String CONTACT_US= "contact";
+	
 }

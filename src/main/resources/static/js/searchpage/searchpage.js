@@ -12,8 +12,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	$("#age").on('change', function() {
 		$("#agenumber").text($("#age").val());
 	});
-	
-	w3.includeHTML();
 
 });
 
