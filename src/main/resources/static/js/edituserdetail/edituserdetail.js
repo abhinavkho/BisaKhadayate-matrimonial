@@ -42,6 +42,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				}
 				
 			}
+			
+			if($("#editform")[0][i].id=="contactNumber" && $("#contactNumber").val().trim()!=""){
+				
+				if($("#contactNumber").val().length>10 || $("#contactNumber").val().length<7)
+				{
+					$("#"+$("#editform")[0][i].id+"_err").text("Mobile number is in wrong format");
+					$("#"+$("#editform")[0][i].id+"_err").css("display", "block");
+					isAllValidData=false;
+				}else
+				{
+					$("#"+$("#editform")[0][i].id+"_err").text("");
+					$("#"+$("#editform")[0][i].id+"_err").css("display", "none");
+				}
+				
+			}
+			
+			
 			if(!($("#editform")[0][i].id=="Update" || $("#editform")[0][i].name=="gender")){
 			userDetails[$("#editform")[0][i].id]=$("#"+$("#editform")[0][i].id).val();
 			}
@@ -92,7 +109,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			var extention=splitFilePath[splitFilePath.length-1];
 			if(extensionArray.includes(extention.toUpperCase()))
 			{
-				$("#fileuploadform").submit();
+				if(numberofImages<5)
+				{
+					$("#fileuploadform").submit();
+				}else
+				{
+					$("#fileupload_err").text("User cannot upload more than 5 images in profile");
+				}
 			}else
 			{
 				$("#fileupload_err").text("file type should be one of them  JPG,JPEG,PNG,PDF .");

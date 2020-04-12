@@ -132,6 +132,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				}
 				
 			}
+			
+			if($("#createuserform")[0][i].id=="contactNumber" && $("#contactNumber").val().trim()!=""){
+				
+				if($("#contactNumber").val().length>10 || $("#contactNumber").val().length<7)
+				{
+					$("#"+$("#createuserform")[0][i].id+"_err").text("Mobile number is in wrong format");
+					$("#"+$("#createuserform")[0][i].id+"_err").css("display", "block");
+					isAllValidData=false;
+				}else
+				{
+					$("#"+$("#createuserform")[0][i].id+"_err").text("");
+					$("#"+$("#createuserform")[0][i].id+"_err").css("display", "none");
+				}
+				
+			}
+			
+			
 			if(!($("#createuserform")[0][i].id=="submituser" || $("#createuserform")[0][i].name=="gender"))
 			userDetails[$("#createuserform")[0][i].id]=$("#"+$("#createuserform")[0][i].id).val();
 		}

@@ -72,9 +72,6 @@ public class UserController implements Constant {
 	public String submitUser(@RequestBody User userDetails,HttpServletRequest request)
 	{
 		createUserService.saveUser(userDetails);
-		User userdetails = (User) request.getSession().getAttribute("userDetails");
-		userdetails =userService.userLogin(userDetails.getUserId(), userDetails.getPassword());
-		request.getSession().setAttribute("userDetails", userdetails);
 		return "User created successfully";
 	}
 	

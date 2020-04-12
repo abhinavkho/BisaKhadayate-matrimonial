@@ -30,7 +30,6 @@
 						</div>
 					</div>
 
-
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label for="emailId">Email  <span class="red">*</span> </label> 
@@ -38,7 +37,7 @@
 						</div>
 						<div class="form-group col-md-6">
 							<label for="contactNumber">Phone Number </label> 
-							<input	class="form-control fieldui" type="text" name="contactNumber" id="contactNumber">
+							<input	class="form-control fieldui" type="number" name="contactNumber" id="contactNumber" onkeydown="javascript: return event.keyCode == 69 ? false : true" ><span class="red" id="contactNumber_err"></span>
 						</div>
 					</div>
 					
@@ -76,7 +75,7 @@
 
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="colour">Colour </label> <input
+							<label for="colour">Complexion </label> <input
 								class="form-control fieldui" type="text" name="colour" id="colour">
 						</div>
 						<div class="form-group col-md-6">

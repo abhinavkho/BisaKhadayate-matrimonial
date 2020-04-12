@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -57,6 +58,9 @@ public class CreateUserServiceImpl implements CreateUserService {
 	@Override
 	@Transactional
 	public void saveUser(User user) {
+		user.setIsActive(true);
+		user.setIsAdmin(false);
+		user.setPassword(generatePassword());
 		userDao.save(user);
 		
 	}
@@ -296,6 +300,17 @@ public class CreateUserServiceImpl implements CreateUserService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public String generatePassword() {
+
+		int leftLimit = 97; // letter 'a'
+		int rightLimit = 122; // letter 'z'
+		int targetStringLength = 10;
+		Random random = new Random();
+
+		return random.ints(leftLimit, rightLimit + 1).limit(targetStringLength)
+				.collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString();
 	}
 		
 
