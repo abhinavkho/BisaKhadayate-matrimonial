@@ -26,15 +26,22 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public List<Map<String, Object>> searchResult(Character gender) {
+	public List<Map<String, Object>> searchResult(Character gender,int index ) {
 		// TODO Auto-generated method stub
-		return userDao.searchResult(gender,true);
+		return userDao.searchResult(gender,true,index);
 	}
 
 	@Override
 	@Transactional
 	public Optional<User> getUser(Integer id) {
 		return userDao.findById(id);
+	}
+
+	@Override
+	@Transactional
+	public Integer searchResultCount(Character gender, boolean isActive) {
+		// TODO Auto-generated method stub
+		return userDao.searchResultCount(gender, isActive);
 	}
 
 	

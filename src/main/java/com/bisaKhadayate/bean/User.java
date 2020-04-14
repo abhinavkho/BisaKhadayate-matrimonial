@@ -83,8 +83,19 @@ public class User  implements Serializable{
 	@Transient
 	private List<String> fileNameList;
 	
+	@Column(name="displaypic")
+	private String displayPic;
 	
 	
+	
+	public String getDisplayPic() {
+		return displayPic;
+	}
+
+	public void setDisplayPic(String displayPic) {
+		this.displayPic = displayPic;
+	}
+
 	public List<String> getFileNameList() {
 		return fileNameList;
 	}

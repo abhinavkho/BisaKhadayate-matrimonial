@@ -140,7 +140,21 @@
 				</select>
 			</div>
 		</div>
-
+		
+		<div class="form-group row">
+			<label for="displayPic" class="col-sm-2 col-form-label lableform">Display Picture</label>
+			<div class="col-sm-6">
+				<select class="form-control fieldborder"  id="displayPic" >
+					<option></option>
+					<span th:each="data: ${imagePathListMap}">
+						<span th:switch="*{user.displayPic}==${data.value} ? ${true}: ${false}">
+							<span th:case="${false}"><option th:value="${data.value}" th:text="${data.key}"></option></span> 
+							<span th:case="${true}"><option th:value="${data.value}" th:text="${data.key}" selected ></option></span> 
+						</span>
+					</span>
+				</select>
+			</div>
+		</div>
 		
 		<div class="form-group row">
 			<label for="currentAddress" class="col-sm-2 col-form-label lableform">Current Address</label>

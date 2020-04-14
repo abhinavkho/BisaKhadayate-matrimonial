@@ -4,9 +4,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -80,7 +83,14 @@ public class UserController implements Constant {
 	{
 		User user = (User) request.getSession().getAttribute("userDetails");
 		ModelAndView mv=new ModelAndView();
-		mv.addObject("filesName",createUserService.getImagesFile(user));
+		List<String> imagePathList=createUserService.getImagesFile(user);
+		mv.addObject("filesName",imagePathList);
+		Map<String, String> imagePathListMap=new HashMap<String, String>();
+		for (String imagePath : imagePathList) {
+			String image[] = imagePath.split("/");
+			imagePathListMap.put(image[image.length-1],imagePath);
+		}
+		mv.addObject("imagePathListMap", imagePathListMap );
 		mv.setViewName(EDIT_UESR_DETAILS);
 		mv.addObject("user", user );
 		mv.addObject("gender",Character.toString(user.getGender()));
@@ -101,15 +111,22 @@ public class UserController implements Constant {
 	
 	  @RequestMapping(value="uploadfile" , method=RequestMethod.POST)
 	  public ModelAndView  fileUpload(@RequestParam("fileupload") MultipartFile file,HttpSession session)
-	  {
-		  User user =(User)session.getAttribute("userDetails");
-		  ModelAndView mv =new ModelAndView();
-		  createUserService.uploadFile(user, file);
-		  mv.addObject("filesName",createUserService.getImagesFile(user));
-		  mv.addObject("user", user);
-		  mv.addObject("gender", Character.toString(user.getGender()));
-		  mv.setViewName(EDIT_UESR_DETAILS);
-		  return mv;
+	{
+		User user = (User) session.getAttribute("userDetails");
+		ModelAndView mv = new ModelAndView();
+		createUserService.uploadFile(user, file);
+		List<String> imagePathList = createUserService.getImagesFile(user);
+		mv.addObject("filesName", imagePathList);
+		Map<String, String> imagePathListMap = new HashMap<String, String>();
+		for (String imagePath : imagePathList) {
+			String image[] = imagePath.split("/");
+			imagePathListMap.put(image[image.length - 1], imagePath);
+		}
+		mv.addObject("imagePathListMap", imagePathListMap);
+		mv.addObject("user", user);
+		mv.addObject("gender", Character.toString(user.getGender()));
+		mv.setViewName(EDIT_UESR_DETAILS);
+		return mv;
 	  }
 	  
 	  
@@ -118,10 +135,12 @@ public class UserController implements Constant {
 		{
 			User userdetails = (User) request.getSession().getAttribute("userDetails");
 			ModelAndView mv=new ModelAndView();
-			List<Map<String, Object>> searchResult=userService.searchResult(gender);
+			List<Map<String, Object>> searchResult=userService.searchResult(gender,0);
 			mv.addObject("userDetail", searchResult);
 			mv.addObject("user", userdetails );
 			mv.addObject("gender", gender );
+			mv.addObject("type", "NF");
+			mv.addObject("totalResult", userService.searchResultCount(gender, true));
 			mv.setViewName(SEARCH_PAGE);
 			return mv;
 		}
@@ -173,9 +192,11 @@ public class UserController implements Constant {
 		{
 			User userdetails = (User) request.getSession().getAttribute("userDetails");
 			ModelAndView mv=new ModelAndView();
-			List<Map<String, Object>> searchResult=createUserService.searchFilterResult(formData.get("gender").get(0).charAt(0), true, formData.get("firstName").get(0),formData.get("lastName").get(0),formData.get("caste").get(0),formData.get("gotra").get(0));
+			List<Map<String, Object>> searchResult=createUserService.searchFilterResult(formData.get("gender").get(0).charAt(0), true, formData.get("firstName").get(0),formData.get("lastName").get(0),formData.get("caste").get(0),formData.get("gotra").get(0),0);
 			mv.addObject("userDetail", searchResult);
 			mv.addObject("user", userdetails );
+			mv.addObject("type", "F");
+			mv.addObject("totalResult", createUserService.searchFilterResultCount(formData.get("gender").get(0).charAt(0), true, formData.get("firstName").get(0),formData.get("lastName").get(0),formData.get("caste").get(0),formData.get("gotra").get(0)));
 			mv.addObject("gender", formData.get("gender").get(0).charAt(0) );
 			mv.setViewName(SEARCH_PAGE);
 			return mv;
@@ -184,16 +205,23 @@ public class UserController implements Constant {
 	  
 	  @RequestMapping(value="deletephoto" , method=RequestMethod.POST)
 	  public ModelAndView  deletePhoto(@RequestParam("picname") String filePath,HttpSession session)
-	  {
-		  User user =(User)session.getAttribute("userDetails");
-		  ModelAndView mv =new ModelAndView();
-		  createUserService.deleteFile(filePath);
-		  mv.addObject("filesName",createUserService.getImagesFile(user));
-		  mv.addObject("user", user);
-		  mv.addObject("gender", Character.toString(user.getGender()));
-		  mv.setViewName(EDIT_UESR_DETAILS);
-		  return mv;
-	  }
+	{
+		User user = (User) session.getAttribute("userDetails");
+		ModelAndView mv = new ModelAndView();
+		createUserService.deleteFile(filePath);
+		List<String> imagePathList = createUserService.getImagesFile(user);
+		mv.addObject("filesName", imagePathList);
+		Map<String, String> imagePathListMap = new HashMap<String, String>();
+		for (String imagePath : imagePathList) {
+			String image[] = imagePath.split("/");
+			imagePathListMap.put(image[image.length - 1], imagePath);
+		}
+		mv.addObject("imagePathListMap", imagePathListMap);
+		mv.addObject("user", user);
+		mv.addObject("gender", Character.toString(user.getGender()));
+		mv.setViewName(EDIT_UESR_DETAILS);
+		return mv;
+	}
 	  
 	  
 	  @GetMapping(value="contactus")

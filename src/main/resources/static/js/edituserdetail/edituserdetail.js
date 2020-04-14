@@ -86,9 +86,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				contentType : 'application/json; charset=utf-8',
 			    data : JSON.stringify(userDetails),
 				success : function(result) {
-					$("#successmsg").text("");
+					/*$("#successmsg").text("");
 					$("#successmsg").text(result);
-					$("#successmsgmodal").modal();
+					$("#successmsgmodal").modal();*/
+					
+					window.location.href="editviewUser";
 				},
 				error: function (jqXHR, textStatus, errorThrown)
 			    {
@@ -130,8 +132,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 
-function showCross(file){
-	  $("#picname").val(file);
-	  $("#deletephoto").submit();
-	  
+function showCross(file) {
+	$("#picname").val(file);
+
+	if (file == $("#displayPic").val()) {
+		$("#fileupload_err").text("You cannot delete your display picture");
+	} else {
+		$("#deletephoto").submit();
+	}
 }

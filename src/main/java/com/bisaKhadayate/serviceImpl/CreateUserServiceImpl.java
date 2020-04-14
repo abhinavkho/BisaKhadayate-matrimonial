@@ -283,9 +283,9 @@ public class CreateUserServiceImpl implements CreateUserService {
 	}
 
 	@Override
-	public List<Map<String, Object>> searchFilterResult(Character gender,boolean isActive , String firstName , String lastName ,String caste , String gotra ) {
+	public List<Map<String, Object>> searchFilterResult(Character gender,boolean isActive , String firstName , String lastName ,String caste , String gotra,int index  ) {
 		// TODO Auto-generated method stub
-		return userDao.searchFilterResult( gender, isActive ,  firstName ,  lastName , caste ,  gotra );
+		return userDao.searchFilterResult( gender, isActive ,  firstName ,  lastName , caste ,  gotra, index  );
 	}
 
 	@Override
@@ -311,6 +311,13 @@ public class CreateUserServiceImpl implements CreateUserService {
 
 		return random.ints(leftLimit, rightLimit + 1).limit(targetStringLength)
 				.collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString();
+	}
+
+	@Override
+	@Transactional
+	public Integer searchFilterResultCount(Character gender, boolean isActive, String firstName, String lastName,
+			String caste, String gotra) {
+		return userDao.searchFilterResultCount(gender, isActive, firstName, lastName, caste, gotra);
 	}
 		
 

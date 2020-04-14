@@ -10,7 +10,9 @@ public interface UserService {
 	
 	 User userLogin(String userName , String password);
 	 
-	 List<Map<String,Object>> searchResult(Character gender);
+	 List<Map<String,Object>> searchResult(Character gender,int index);
+	 
+	 Integer searchResultCount(Character gender,boolean isActive);
 	 
 	 Optional<User> getUser(Integer id);
 }
