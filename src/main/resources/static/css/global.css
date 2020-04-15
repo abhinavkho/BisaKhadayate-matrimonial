@@ -51,3 +51,21 @@
 	color: white;
 	font: italic bold 12px/30px Georgia, serif;	
 }
+
+
+/* main loader */
+
+#pageloader{
+	
+	position: fixed;
+	top : 40%;
+	left : 48%;
+	display:none;
+}
+
+/* main loader */
+
+
+.makecursor{
+	cursor: pointer;
+}

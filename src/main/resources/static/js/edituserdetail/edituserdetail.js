@@ -80,6 +80,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		
 		if(isAllValidData)
 		{
+			$("#pageloader").css("display", "block");
+			$("#bodydiv").css("opacity", ".5");
+			
 			$.ajax({
 				url : "updateuser",
 				type: "POST",
@@ -89,6 +92,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 					/*$("#successmsg").text("");
 					$("#successmsg").text(result);
 					$("#successmsgmodal").modal();*/
+					$("#pageloader").css("display", "none");
+					$("#bodydiv").css("opacity", "1");
 					
 					window.location.href="editviewUser";
 				},
@@ -113,6 +118,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			{
 				if(numberofImages<5)
 				{
+					$("#pageloader").css("display", "block");
+					$("#bodydiv").css("opacity", ".5");
 					$("#fileuploadform").submit();
 				}else
 				{

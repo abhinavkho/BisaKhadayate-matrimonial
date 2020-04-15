@@ -10,14 +10,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	
 	
 	$(document).scroll(function(e){
-	    if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.8){
+	    if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.9){
 	    	if(startIndex<totalResult && isProcessCompleted)
 	    	{
 	    		isProcessCompleted=false;
+	    		$("#searchLoader").css("display","block");
 	    		getPendingdata(searchType);
 	    	}
 	    }
 	});
+	
+	$("#filtersearchbtn").click(function(){
+		$("#pageloader").css("display", "block");
+		$("#bodydiv").css("opacity", ".5");
+		$("#searchFilterResultform").submit();
+	})
 
 });
 
@@ -26,6 +33,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function loadFullProfile(id)
 {
 
+	$("#pageloader").css("display", "block");
+	$("#bodydiv").css("opacity", ".5");
 	 $.ajax({
 		url : "loadfullprofileofuser/"+id,
 		type: "POST",
@@ -51,6 +60,8 @@ function loadFullProfile(id)
             $("#inputhiddenUserId").val(result['id']);
             $('#download').text("");
             $("#download").prepend("<a href=\"download?id="+result['id']+"\" id=\"downloaduserdata\" >Download</a>");
+            $("#pageloader").css("display", "none");
+            $("#bodydiv").css("opacity", "1");
             $("#fullprofilemodal").modal();
 		},
 		error: function (jqXHR, textStatus, errorThrown)
@@ -113,7 +124,7 @@ function getPendingdata(searchType)
 				var span ="<span>"+
 					"<table style=\"width: 100%\" class=\"resultbox shadow-sm p-3 mb-5 bg-blue rounded\">"+
 						"<tbody><tr>"+
-							"<td rowspan=\"5\"><img src=\"images/bride.jpg\" alt=\"Italian Trulli\" class=\"image_set\" onclick=\"loadFullProfile('11')\"><input type=\"hidden\" id=\"userid\" value=\"11\"></td>"+
+							"<td rowspan=\"5\"><img src=\"i"+userDetail.displayPic+"\" alt=\"Italian Trulli\" class=\"image_set\" onclick=\"loadFullProfile('11')\"><input type=\"hidden\" id=\"userid\" value=\"11\"></td>"+
 							"<td><span>"+userDetail.firstName+"</span> <span>"+userDetail.lastName+"</span></td>"+
 						"</tr>"+
 						"<tr>"+
@@ -134,11 +145,11 @@ function getPendingdata(searchType)
 			 
 			 $("#searchresultdiv").html(searchDiv);
 			
-			
+			 $("#searchLoader").css("display","none");
 		},
 		error: function (jqXHR, textStatus, errorThrown)
 	    {
-	 
+			 $("#searchLoader").css("display","none");
 	    }
 	});
 }

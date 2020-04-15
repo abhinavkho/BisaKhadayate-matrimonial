@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		submitLogin();
 	});
 	
-
 		function submitLogin() {
 		for (var i = 0; $("#loginform")[0].length > i; i++) {
 			var id = $("#loginform")[0][i].id;

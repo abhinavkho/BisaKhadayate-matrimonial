@@ -7,20 +7,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav">
-            	<span th:if="${user.isAdmin}"><a class="nav-item nav-link active" href="createuser">CreateUser</a> </span>
-            	<span th:if="${user.isAdmin}"><a class="nav-item nav-link active" href="#">CreateAdvertise</a> </span>
-                <a href="home" class="nav-item nav-link active">Home</a>
-                <a href="editviewUser" class="nav-item nav-link active">View profile</a>
-                <a href="contactus" class="nav-item nav-link active">Contact</a>
-                <a href="logout" class="nav-item nav-link active" >logout</a>
+            	<span th:if="${user.isAdmin}"><a class="nav-item nav-link active makecursor" id="createuser">CreateUser</a> </span>
+            	<span th:if="${user.isAdmin}"><a class="nav-item nav-link active makecursor" id="createadvertise">CreateAdvertise</a> </span>
+                <a id="home" class="nav-item nav-link active makecursor">Home</a>
+                <a id="editviewuser" class="nav-item nav-link active makecursor">View profile</a>
+                <a id="contactus" class="nav-item nav-link active makecursor">Contact</a>
+                <a id="logout" class="nav-item nav-link active makecursor" >logout</a>
             </div>
 			<div class="navbar-nav ml-auto">
-				<form class="form-inline ml-auto" action="searchpage" method="post">
+				<form class="form-inline ml-auto" action="searchpage" method="post" id="searchpageform">
 					<select class="form-control mr-sm-2" style="width: 150px;"	id="gender" name="gender">
 							<option value="M">Male</option>
 							<option value="F">Female</option>
 						</select>
-					<button type="submit" class="btn btn-outline-light">Search</button>
+					<button type="button" class="btn btn-outline-light" id="searchbutton">Search</button>
 				</form>
 			</div>
 		</div>

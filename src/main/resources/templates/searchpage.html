@@ -14,6 +14,7 @@
 
 </head>
 <body>
+<div id="bodydiv">
 	<span id="newheader"></span>
 	<span th:replace="header"></span>
 	<br>
@@ -22,7 +23,7 @@
 	<div class="row">
 		<div class="column left">
 			<span id="filterbar">
-				<form method="post" action="searchFilterResult" class="resultbox shadow-sm p-3 mb-5 bg-blue rounded" >
+				<form method="post" action="searchFilterResult" class="resultbox shadow-sm p-3 mb-5 bg-blue rounded" id="searchFilterResultform">
 					<div class="sideheader">Search filter</div><br>
 					<div class="form-group">
 						<input type="text" class="form-control" id="firstName"
@@ -59,7 +60,7 @@
 						</select>
 					</div>
 					<input type="hidden" name="gender" th:value="${gender}" id="gender">
-					<button type="submit" class="btn btn-primary" name="btn" value="btn">Submit</button>
+					<button type="button" class="btn btn-primary" name="btn" value="btn" id="filtersearchbtn">Submit</button>
 				</form>
 				<hr>
 			</span>
@@ -84,7 +85,12 @@
 					</tr>
 				</table>
 			</span>
-		</div>
+				<div class="d-flex justify-content-center " >
+					<div class="spinner-border" role="status" id="searchLoader">
+						<span class="sr-only">Loading...</span>
+					</div>
+				</div>
+			</div>
 		<div class="column right">
 			<h2 class="sideheader">Advertisement</h2>
 			<marquee behavior="scroll" direction="down" onmouseover="this.stop();" onmouseout="this.start();">
@@ -213,12 +219,12 @@
 <br><br>
 <span th:replace="footer"></span>
 
-
+</div>
 <script th:inline="javascript">
 var searchType = [[${type}]];
 var totalResult= [[${totalResult}]];
 </script>
 
-
+<span th:replace="loader"></span>
 </body>
 </html>

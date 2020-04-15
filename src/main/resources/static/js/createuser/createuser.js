@@ -1,14 +1,7 @@
 var isValidEmailId = false;
 var isValidUserId = false;
 
-function openNav() {
-	document.getElementById("mySidenav").style.width = "250px";
-}
 
-function closeNav() {
-	document.getElementById("mySidenav").style.width = "0";
-}
-	
 document.addEventListener("DOMContentLoaded", function(event) {
 
 	$("#emailId").blur(function(){
@@ -169,15 +162,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		
 		if(isAllValidData)
 		{
+			$("#pageloader").css("display", "block");
+			$("#bodydiv").css("opacity", ".5");
+			
 			$.ajax({
 				url : "submituser",
 				type: "POST",
 				contentType : 'application/json; charset=utf-8',
 			    data : JSON.stringify(userDetails),
 				success : function(result) {
-					$("#successmsg").text("");
+					/*$("#successmsg").text("");
 					$("#successmsg").text(result);
-					$("#successmsgmodal").modal();
+					$("#successmsgmodal").modal();*/
+					
+					$("#pageloader").css("display", "none");
+					$("#bodydiv").css("opacity", "1");
+					window.location.href="createuser";
 				},
 				error: function (jqXHR, textStatus, errorThrown)
 			    {

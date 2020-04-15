@@ -109,3 +109,8 @@ background-color: rebeccapurple;
 	height: 280px;
 	width : 100%;
 }
+
+#searchLoader
+{
+	display:none;
+}
