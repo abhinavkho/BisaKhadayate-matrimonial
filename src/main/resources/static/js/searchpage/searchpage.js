@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		$("#firstName").val(searchfilterData.firstName[0]);
 		$("#lastName").val(searchfilterData.lastName[0]);
 		$("#age").val(searchfilterData.age[0]);
+		$("#agenumber").text($("#age").val());
 		$("#gotra").val(searchfilterData.gotra[0]);
 		$("#caste").val(searchfilterData.caste[0]);
 	}
