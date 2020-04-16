@@ -142,8 +142,26 @@ public class UserController implements Constant {
 			mv.addObject("type", "NF");
 			mv.addObject("totalResult", userService.searchResultCount(gender, true));
 			mv.setViewName(SEARCH_PAGE);
+			mv.addObject("searchfilter", new HashMap<String, String>());
 			return mv;
 		}
+	  
+	  
+	  @PostMapping(value="searchFilterResult")
+			public ModelAndView searchFilterResult(@RequestBody MultiValueMap<String, String> formData,HttpServletRequest request)
+			{
+				User userdetails = (User) request.getSession().getAttribute("userDetails");
+				ModelAndView mv=new ModelAndView();
+				List<Map<String, Object>> searchResult=createUserService.searchFilterResult(formData.get("gender").get(0).charAt(0), true, formData.get("firstName").get(0),formData.get("lastName").get(0),formData.get("caste").get(0),formData.get("gotra").get(0),0);
+				mv.addObject("userDetail", searchResult);
+				mv.addObject("user", userdetails );
+				mv.addObject("type", "F");
+				mv.addObject("totalResult", createUserService.searchFilterResultCount(formData.get("gender").get(0).charAt(0), true, formData.get("firstName").get(0),formData.get("lastName").get(0),formData.get("caste").get(0),formData.get("gotra").get(0)));
+				mv.addObject("gender", formData.get("gender").get(0).charAt(0) );
+				mv.setViewName(SEARCH_PAGE);
+				mv.addObject("searchfilter", formData);
+				return mv;
+			}
 	  
 	  @PostMapping(value="loadfullprofileofuser/{id}")
 	  @ResponseBody
@@ -187,20 +205,7 @@ public class UserController implements Constant {
 		}
 	 
 	  
-	  @PostMapping(value="searchFilterResult")
-		public ModelAndView searchFilterResult(@RequestBody MultiValueMap<String, String> formData,HttpServletRequest request)
-		{
-			User userdetails = (User) request.getSession().getAttribute("userDetails");
-			ModelAndView mv=new ModelAndView();
-			List<Map<String, Object>> searchResult=createUserService.searchFilterResult(formData.get("gender").get(0).charAt(0), true, formData.get("firstName").get(0),formData.get("lastName").get(0),formData.get("caste").get(0),formData.get("gotra").get(0),0);
-			mv.addObject("userDetail", searchResult);
-			mv.addObject("user", userdetails );
-			mv.addObject("type", "F");
-			mv.addObject("totalResult", createUserService.searchFilterResultCount(formData.get("gender").get(0).charAt(0), true, formData.get("firstName").get(0),formData.get("lastName").get(0),formData.get("caste").get(0),formData.get("gotra").get(0)));
-			mv.addObject("gender", formData.get("gender").get(0).charAt(0) );
-			mv.setViewName(SEARCH_PAGE);
-			return mv;
-		}
+	
 	  
 	  
 	  @RequestMapping(value="deletephoto" , method=RequestMethod.POST)

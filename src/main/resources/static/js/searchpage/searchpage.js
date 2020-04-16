@@ -25,6 +25,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		$("#bodydiv").css("opacity", ".5");
 		$("#searchFilterResultform").submit();
 	})
+	
+	if(searchType=="F")
+	{
+		$("#firstName").val(searchfilterData.firstName[0]);
+		$("#lastName").val(searchfilterData.lastName[0]);
+		$("#age").val(searchfilterData.age[0]);
+		$("#gotra").val(searchfilterData.gotra[0]);
+		$("#caste").val(searchfilterData.caste[0]);
+	}
 
 });
 

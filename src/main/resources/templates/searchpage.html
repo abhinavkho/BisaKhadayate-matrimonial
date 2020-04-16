@@ -27,21 +27,21 @@
 					<div class="sideheader">Search filter</div><br>
 					<div class="form-group">
 						<input type="text" class="form-control" id="firstName"
-							placeholder="First name" name="firstName">
+							placeholder="First name" name="firstName" >
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control" id="lastName"
-							placeholder="Last name" name="lastName">
+							placeholder="Last name" name="lastName"  >
 					</div>
 					<div class="form-group">
 					<label for="age">Age : <span id="agenumber"></span></label> 
-						 <input type="range" class="form-control-range custom-range" id="age" name="age">
+						 <input type="range" class="form-control-range custom-range" id="age" name="age" >
 					</div>
 					<div class="form-group">
 						<label for="caste">Caste : </label> <select class="form-control"
 							id="caste" name="caste">
 							<option></option>
-							<option>1</option>
+							<option value="1">1</option>
 							<option>2</option>
 							<option>3</option>
 							<option>4</option>
@@ -223,6 +223,7 @@
 <script th:inline="javascript">
 var searchType = [[${type}]];
 var totalResult= [[${totalResult}]];
+var searchfilterData = [[${searchfilter}]]
 </script>
 
 <span th:replace="loader"></span>
