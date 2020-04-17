@@ -85,6 +85,7 @@
 					</tr>
 				</table>
 			</span>
+			<h2 th:if="${userDetail.isEmpty()}" class="text-center" ><b> Not data found </b></h2>
 				<div class="d-flex justify-content-center " >
 					<div class="spinner-border" role="status" id="searchLoader">
 						<span class="sr-only">Loading...</span>
@@ -93,7 +94,6 @@
 			</div>
 		<div class="column right">
 			<h2 class="sideheader">Advertisement</h2>
-			<marquee behavior="scroll" direction="down" onmouseover="this.stop();" onmouseout="this.start();">
 				<span th:each="i :${#numbers.sequence( 1, 5)}" >
 					<table>
 						<tbody>
@@ -102,12 +102,11 @@
 									src="images/groom.jpg"></td>
 							</tr>
 							<tr>
-								<td>bjhdkfj</td>
+								<th>bjhdkfj</th>
 							</tr>
 						</tbody>
 					</table>
 				</span>
-				</marquee>
 		</div>
 	</div>
 	
