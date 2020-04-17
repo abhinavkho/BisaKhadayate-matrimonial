@@ -111,7 +111,7 @@ function getPendingdata(searchType)
 	searchCriteria["searchType"] = searchType;
 	if(searchType=="F")
 	{
-		NsearchCriteria["firstName"] = $("#firstname").val();
+		searchCriteria["firstName"] = $("#firstname").val();
 		searchCriteria["lastName"] =  $("#lastName").val();
 		searchCriteria["age"] =  $("#age").val();
 		searchCriteria["caste"] = $("#caste").val();
@@ -124,7 +124,7 @@ function getPendingdata(searchType)
 	    data : JSON.stringify(searchCriteria),
 		success : function(result) {
 			isProcessCompleted=true;
-			startIndex+=startIndex;
+			startIndex+=10;
 			
 			 var searchDiv = $("#searchresultdiv").html();
 			 

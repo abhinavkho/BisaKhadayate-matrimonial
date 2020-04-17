@@ -31,7 +31,7 @@ public class SearchPageController implements Constant{
 
 		if(filterCriteria.get("searchType").equalsIgnoreCase("F"))
 		{
-			searchResult=createUserService.searchFilterResult(filterCriteria.get("gender").charAt(0), true, filterCriteria.get("firstName"), filterCriteria.get("lastName"), filterCriteria.get("caste"), filterCriteria.get("gotra"), Integer.parseInt(filterCriteria.get("startIndex")));
+			searchResult=createUserService.searchFilterResult(filterCriteria.get("gender").charAt(0), true, filterCriteria.get("firstName"), filterCriteria.get("lastName"), filterCriteria.get("caste"), filterCriteria.get("gotra"),Integer.parseInt(filterCriteria.get("age")), Integer.parseInt(filterCriteria.get("startIndex")));
 		}else
 		{
 			searchResult=userService.searchResult(filterCriteria.get("gender").charAt(0), Integer.parseInt(filterCriteria.get("startIndex")));

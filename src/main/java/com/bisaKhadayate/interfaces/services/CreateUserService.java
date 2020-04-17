@@ -29,10 +29,10 @@ public interface CreateUserService {
 	
 	String sendmail() ;
 	
-	List<Map<String,Object>> searchFilterResult(Character gender,boolean isActive , String firstName , String lastName ,String caste , String gotra,int index );
+	List<Map<String,Object>> searchFilterResult(Character gender,boolean isActive , String firstName , String lastName ,String caste , String gotra,int age,int index );
 	
 	void deleteFile(String filePath);
 	
-	Integer searchFilterResultCount(Character gender,boolean isActive , String firstName , String lastName ,String caste , String gotra );
+	Integer searchFilterResultCount(Character gender,boolean isActive , String firstName , String lastName ,String caste , String gotra ,int age);
 
 }

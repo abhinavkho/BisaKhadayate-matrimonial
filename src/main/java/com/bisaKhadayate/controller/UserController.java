@@ -152,11 +152,11 @@ public class UserController implements Constant {
 			{
 				User userdetails = (User) request.getSession().getAttribute("userDetails");
 				ModelAndView mv=new ModelAndView();
-				List<Map<String, Object>> searchResult=createUserService.searchFilterResult(formData.get("gender").get(0).charAt(0), true, formData.get("firstName").get(0),formData.get("lastName").get(0),formData.get("caste").get(0),formData.get("gotra").get(0),0);
+				List<Map<String, Object>> searchResult=createUserService.searchFilterResult(formData.get("gender").get(0).charAt(0), true, formData.get("firstName").get(0),formData.get("lastName").get(0),formData.get("caste").get(0),formData.get("gotra").get(0),Integer.parseInt(formData.get("age").get(0)),0);
 				mv.addObject("userDetail", searchResult);
 				mv.addObject("user", userdetails );
 				mv.addObject("type", "F");
-				mv.addObject("totalResult", createUserService.searchFilterResultCount(formData.get("gender").get(0).charAt(0), true, formData.get("firstName").get(0),formData.get("lastName").get(0),formData.get("caste").get(0),formData.get("gotra").get(0)));
+				mv.addObject("totalResult", createUserService.searchFilterResultCount(formData.get("gender").get(0).charAt(0), true, formData.get("firstName").get(0),formData.get("lastName").get(0),formData.get("caste").get(0),formData.get("gotra").get(0),Integer.parseInt(formData.get("age").get(0))));
 				mv.addObject("gender", formData.get("gender").get(0).charAt(0) );
 				mv.setViewName(SEARCH_PAGE);
 				mv.addObject("searchfilter", formData);
