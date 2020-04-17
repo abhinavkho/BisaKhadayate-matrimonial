@@ -134,7 +134,7 @@ function getPendingdata(searchType)
 				var span ="<span>"+
 					"<table style=\"width: 100%\" class=\"resultbox shadow-sm p-3 mb-5 bg-blue rounded\">"+
 						"<tbody><tr>"+
-							"<td rowspan=\"5\"><img src=\"i"+userDetail.displayPic+"\" alt=\"Italian Trulli\" class=\"image_set\" onclick=\"loadFullProfile('11')\"><input type=\"hidden\" id=\"userid\" value=\"11\"></td>"+
+							"<td rowspan=\"5\" class=\"imageWidth\"><img src=\"i"+userDetail.displayPic+"\" alt=\"no image\" class=\"image_set\" onclick=\"loadFullProfile('11')\"><input type=\"hidden\" id=\"userid\" value=\"11\"></td>"+
 							"<td><span>"+userDetail.firstName+"</span> <span>"+userDetail.lastName+"</span></td>"+
 						"</tr>"+
 						"<tr>"+

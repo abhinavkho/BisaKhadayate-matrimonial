@@ -69,7 +69,7 @@
 			<span th:each="data, iterstat: ${userDetail}">
 				<table style="width: 100%" class="resultbox shadow-sm p-3 mb-5 bg-blue rounded">
 					<tr>
-						<td rowspan="5"><img th:src="@{${data.get('displayPic')}}"	alt="no image" class="image_set" th:onclick="|loadFullProfile('${data.get('id')}')|" ><input type="hidden" id="userid" th:value="${data.get('id')}"></td>
+						<td rowspan="5" class="imageWidth"><img th:src="@{${data.get('displayPic')}}"	alt="no image" class="image_set" th:onclick="|loadFullProfile('${data.get('id')}')|" ><input type="hidden" id="userid" th:value="${data.get('id')}"></td>
 						<td><span th:text="${data.get('firstName')}"> </span> <span
 							th:text="${data.get('lastName')}"> </span></td>
 					</tr>
