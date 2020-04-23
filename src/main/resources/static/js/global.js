@@ -16,7 +16,7 @@ $("#createuser").click(function(){
 $("#createadvertise").click(function(){
 	$("#pageloader").css("display", "block");
 	$("#bodydiv").css("opacity", ".5");
-	location.href="#";
+	location.href="createadvertise";
 	});
 
 
