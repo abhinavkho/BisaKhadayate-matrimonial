@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>create advertise</title>
+<link rel="stylesheet" type="text/css"
+	href="css/bootstrap.min-4.3.1/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="css/advertise/advertise.css">
+<link rel="stylesheet" type="text/css" href="css/global.css">
+<script type="text/javascript" src="js/jquery/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="js/bootstrap.min/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/advertise/advertise.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
+</head>
+<body>
+	<span id="newheader"></span>
+	<span th:replace="header"></span>
+	<br>
+	<br>
+<h2 class="text-center title-font" ><b>Home Slider Advertise </b></h2>
+	<form enctype="multipart/form-data" id="homeslideradvertise"
+		method="post" action="homeslideradvertise" class="advertiseuploadform">
+		<div id="filehomeslideradvertisediv">
+			<input type="file" class="fileupload" id="filehomeslideradvertise"
+				name="filehomeslideradvertise"><span class="red"
+				id="filehomeslideradvertise_err"></span>
+		</div>
+		<br>
+		<input type="button" class=" btn btn-primary" id="submitphotohomeslideradvertise"	value="Upload">
+	</form>
+
+	<hr>
+<h2 class="text-center title-font" ><b>Home Marquee Advertise </b></h2>
+	<form enctype="multipart/form-data" id="homemarqueeadvertise"
+		method="post" action="homemarqueeadvertise" class="advertiseuploadform">
+		<div id="filehomemarqueeadvertisediv">
+			<input type="file" class="fileupload" id="filehomemarqueeadvertise"
+				name="filehomemarqueeadvertise"><span class="red"
+				id="filehomemarqueeadvertise_err"></span>
+		</div>
+		<br>
+		<input type="button" class=" btn btn-primary" id="submitphotohomemarqueeadvertise"	value="Upload">
+	</form>
+
+	<hr>
+<h2 class="text-center title-font" ><b>View Profile Advertise </b></h2>
+	<form enctype="multipart/form-data" id="viewprofileadvertise"
+		method="post" action="viewprofileadvertise" class="advertiseuploadform">
+		<div id="fileviewprofileadvertisediv">
+			<input type="file" class="fileupload" id="fileviewprofileadvertise"
+				name="fileviewprofileadvertise"><span class="red"
+				id="fileviewprofileadvertise_err"></span>
+		</div>
+		<br>
+		<input type="button" class=" btn btn-primary" id="submitphotoviewprofileadvertise"	value="Upload">
+	</form>
+
+	<hr>
+<h2 class="text-center title-font" ><b>Search Page Advertise </b></h2>
+	<form enctype="multipart/form-data" id="searchpageadvertise"
+		method="post" action="searchpageadvertise" class="advertiseuploadform">
+		<div id="filesearchpageadvertisediv">
+			<input type="file" class="fileupload" id="filesearchpageadvertise"
+				name="filesearchpageadvertise"><span class="red"
+				id="filesearchpageadvertise_err"></span>
+		</div>
+		<br>
+		<input type="button" class=" btn btn-primary" id="submitphotosearchpageadvertise"	value="Upload">
+	</form>
+
+	<hr>
+
+	<br>
+	<br>
+	<span th:replace="footer"></span>
+
+</body>
+</html>

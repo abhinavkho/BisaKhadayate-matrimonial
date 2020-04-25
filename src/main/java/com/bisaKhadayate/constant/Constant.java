@@ -19,5 +19,20 @@ public interface Constant {
 	public final static String  EDIT_UESR_DETAILS = "edituserdetail";
 	
 	public final static String CONTACT_US= "contact";
+
+	public final static String ADVERTISE= "advertise";
+
+	public final static String LOGIN_ERROR_MSG= "Username and password not match";
 	
+	public final static String FILTER = "F";
+	
+	public final static String NON_FILTER = "NF";
+	
+	public final static String USER_CREATED_MSG = "User created successfully";
+	
+	public final static String USER_UPDATED_MSG = "User updated successfully";
+	
+	public final static String MAIL_SUCCESS_MSG= "Mail has send successfully";
+	
+	public final static String MAIL_ERROR_MSG= "Not able to send email ";
 }

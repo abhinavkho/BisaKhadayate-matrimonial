@@ -41,22 +41,18 @@
 						<label for="caste">Caste : </label> <select class="form-control"
 							id="caste" name="caste">
 							<option></option>
-							<option value="1">1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
+							<span th:each="caste: ${casteList}">
+									<span><option th:value="${caste.name}" th:text="${caste.name}"></option></span> 
+							</span>
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="gotra">Gotra : </label> <select class="form-control"
 							id="gotra" name="gotra">
 							<option></option>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
+							<span th:each="gotra: ${gotraList}">
+									<span><option th:value="${gotra.name}" th:text="${gotra.name}"></option></span> 
+							</span>
 						</select>
 					</div>
 					<input type="hidden" name="gender" th:value="${gender}" id="gender">
@@ -128,67 +124,67 @@
 					<table style="width: 100%">
 						<tr>
 							<th>Name</th>
-							<td ><span id="firstName_mdl"></span> <span id="lastName_mdl"></span></td>
+							<td class="loadfulldata" ><span id="firstName_mdl"></span> <span id="lastName_mdl"></span></td>
 						</tr>
 						<tr>
 							<th>Contact Number</th>
-							<td id="contactNumber_mdl"></td>
+							<td id="contactNumber_mdl" class="loadfulldata" ></td>
 						</tr>
 						<tr>
 							<th>Email id</th>
-							<td id="emailId_mdl"></td>
+							<td id="emailId_mdl" class="loadfulldata" ></td>
 						</tr>
 						<tr>
 							<th>Height</th>
-							<td id="height_mdl"></td>
+							<td id="height_mdl" class="loadfulldata" ></td>
 						</tr>
 						<tr>
 							<th>Date of Birth</th>
-							<td id="dob_mdl"></td>
+							<td id="dob_mdl" class="loadfulldata" ></td>
 						</tr>
 						<tr>
 							<th>Gender</th>
-							<td id="gender_mdl"></td>
+							<td id="gender_mdl" class="loadfulldata" ></td>
 						</tr>
 						<tr>
 							<th>Colour</th>
-							<td id="colour_mdl"></td>
+							<td id="colour_mdl" class="loadfulldata" ></td>
 						</tr>
 						<tr>
 							<th>Caste</th>
-							<td id="caste_mdl"></td>
+							<td id="caste_mdl" class="loadfulldata" ></td>
 						</tr>
 						<tr>
 							<th>Birth place</th>
-							<td id="placeOfBirth_mdl"></td>
+							<td id="placeOfBirth_mdl" class="loadfulldata" ></td>
 						</tr>
 						<tr>
 							<th>Birth time</th>
-							<td id="time_mdl"></td>
+							<td id="time_mdl" class="loadfulldata" ></td>
 						</tr>
 						<tr>
 							<th>Gotra</th>
-							<td id="gotra_mdl"></td>
+							<td id="gotra_mdl" class="loadfulldata" ></td>
 						</tr>
 						<tr>
 							<th>Current Address</th>
-							<td id="currentAddress_mdl"></td>
+							<td id="currentAddress_mdl" class="loadfulldata" ></td>
 						</tr>
 						<tr>
 							<th>Parmanent Address</th>
-							<td id="permanentAddress_mdl"></td>
+							<td id="permanentAddress_mdl" class="loadfulldata" ></td>
 						</tr>
 						<tr>
 							<th>Education</th>
-							<td id="highestEducation_mdl"></td>
+							<td id="highestEducation_mdl" class="loadfulldata" ></td>
 						</tr>
 						<tr>
 							<th>Occupation</th>
-							<td id="occupation_mdl"></td>
+							<td id="occupation_mdl" class="loadfulldata" ></td>
 						</tr>
 						<tr>
 							<th>Family Details</th>
-							<td id="familyDetails_mdl"></td>
+							<td id="familyDetails_mdl" class="loadfulldata" ></td>
 						</tr>
 					</table>
 					

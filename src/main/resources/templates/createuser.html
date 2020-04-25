@@ -38,7 +38,7 @@
 						</div>
 						<div class="form-group col-md-6">
 							<label for="contactNumber">Phone Number </label> 
-							<input	class="form-control fieldui" type="number" name="contactNumber" id="contactNumber" onkeydown="javascript: return event.keyCode == 69 ? false : true" ><span class="red" id="contactNumber_err"></span>
+							<input	class="form-control fieldui" type="number" name="contactNumber" id="contactNumber" onkeydown="javascript: return (event.keyCode == 69 || event.keyCode == 189 || event.keyCode == 190 ) ? false : true" ><span class="red" id="contactNumber_err"></span>
 						</div>
 					</div>
 					
@@ -49,8 +49,8 @@
 							<input	class="form-control fieldui" type="text" name="userId" id="userId"><span class="red" id="userId_err"></span>
 						</div>
 						<div class="form-group col-md-6">
-							<label for="height">Height </label> 
-							<input	class="form-control fieldui" type="text" name="height" id="height">
+							<label for="height">Height (in cm) </label> 
+							<input	class="form-control fieldui" type="text" name="height" id="height" onkeydown="javascript: return (event.keyCode < 48 || event.keyCode > 57 || $(this).val().length>=3 ) ? (event.keyCode==8?true :false ): true"  >
 						</div>
 					</div>
 
@@ -76,12 +76,25 @@
 
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="colour">Complexion </label> <input
-								class="form-control fieldui" type="text" name="colour" id="colour">
+							<label for="colour">Complexion </label> 
+							<select class="form-control fieldui" id="colour" name="colour">
+								<option value="Very Fair">Very Fair</option>
+								<option value="Fair">Fair</option>
+								<option value="Olive">Olive</option>
+								<option value="Light Brown">Light Brown</option>
+								<option value="Brown">Brown</option>
+								<option value="Dark Brown">Dark Brown</option>
+								<option value="Black Brown">Black Brown</option>
+						   </select>
 						</div>
 						<div class="form-group col-md-6">
-							<label for="caste">Caste </label> <input
-								class="form-control fieldui" type="text" name="caste" id="caste">
+							<label for="caste">Caste </label> 								
+							<select class="form-control fieldui" id="caste" name="caste">
+								<option></option>
+								<span th:each="caste: ${casteList}">
+									<option th:value="${caste.name}" th:text="${caste.name}"></option>
+						        </span>
+						   </select>
 						</div>
 					</div>
 					
@@ -103,9 +116,9 @@
 						<label for="gotra">Gotra</label> <select class="gotra" id="gotra"
 							name="gotra">
 							<option></option>
-							<option>Subject 1</option>
-							<option>Subject 2</option>
-							<option>Subject 3</option>
+							<span th:each="gotra: ${gotraList}">
+								<option th:value="${gotra.name}" th:text="${gotra.name}"></option> 
+							</span>
 						</select>
 					</div>
 				</div>

@@ -72,9 +72,9 @@
 		</div>
 		
 		<div class="form-group row">
-			<label for="height" class="col-sm-2 col-form-label lableform">Height</label>
+			<label for="height" class="col-sm-2 col-form-label lableform">Height (in cm)</label>
 			<div class="col-sm-6">
-				<input type="text" class="form-control fieldborder  " id="height" th:field="*{user.height}">
+				<input type="text" class="form-control fieldborder  " id="height" th:field="*{user.height}"  onkeydown="javascript: return (event.keyCode < 48 || event.keyCode > 57 || $(this).val().length>=3 ) ? (event.keyCode==8?true :false ): true" >
 			</div>
 		</div>
 		
@@ -103,9 +103,18 @@
 		</div>
 		
 		<div class="form-group row">
-			<label for="colour" class="col-sm-2 col-form-label lableform">Colour</label>
+			<label for="colour" class="col-sm-2 col-form-label lableform">Complexion</label>
 			<div class="col-sm-6">
-				<input type="text" class="form-control fieldborder  " id="colour" th:field="*{user.colour}">
+				<!-- <input type="text" class="form-control fieldborder  " id="colour" th:field="*{user.colour}"> -->
+				<select class="form-control fieldborder" id="colour" name="colour">
+								<option value="Very Fair">Very Fair</option>
+								<option value="Fair">Fair</option>
+								<option value="Olive">Olive</option>
+								<option value="Light Brown">Light Brown</option>
+								<option value="Brown">Brown</option>
+								<option value="Dark Brown">Dark Brown</option>
+								<option value="Black Brown">Black Brown</option>
+						   </select>
 			</div>
 		</div>
 		
@@ -113,7 +122,15 @@
 		<div class="form-group row">
 			<label for="caste" class="col-sm-2 col-form-label lableform">Caste<span class="red">*</span></label>
 			<div class="col-sm-6">
-				<input type="text" class="form-control fieldborder  " id="caste" th:field="*{user.caste}">
+				<select class="form-control fieldborder"  id="caste" >
+					<option></option>
+					<span th:each="caste: ${casteList}">
+						<span th:switch="*{user.caste}==${caste.name} ? ${true}: ${false}">
+							<span th:case="${false}"><option th:value="${caste.name}" th:text="${caste.name}"></option></span> 
+							<span th:case="${true}"><option th:value="${caste.name}" th:text="${caste.name}" selected ></option></span> 
+						</span>
+					</span>
+				</select>
 			</div>
 		</div>
 		
@@ -136,8 +153,14 @@
 		<div class="form-group row">
 			<label for="gotra" class="col-sm-2 col-form-label lableform">Gotra</label>
 			<div class="col-sm-6">
-				<select class="form-control fieldborder"  id="gotra" th:field="*{user.gotra}">
-					<option value="1">1</option>
+				<select class="form-control fieldborder"  id="gotra" >
+					<option></option>
+					<span th:each="gotra: ${gotraList}">
+						<span th:switch="*{user.gotra}==${gotra.name} ? ${true}: ${false}">
+							<span th:case="${false}"><option th:value="${gotra.name}" th:text="${gotra.name}"></option></span> 
+							<span th:case="${true}"><option th:value="${gotra.name}" th:text="${gotra.name}" selected ></option></span> 
+						</span>
+					</span>
 				</select>
 			</div>
 		</div>

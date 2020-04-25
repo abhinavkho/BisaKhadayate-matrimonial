@@ -1,0 +1,13 @@
+.fileupload{
+    border: 2px solid rebeccapurple;
+    border-radius: 5px;
+    font: italic bold 12px/30px Georgia, serif;
+}
+
+.advertiseuploadform{
+	padding-left: 2%;
+}
+
+.title-font{
+	color: rebeccapurple;
+}
