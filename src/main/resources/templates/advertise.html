@@ -9,6 +9,8 @@
 	href="css/advertise/advertise.css">
 <link rel="stylesheet" type="text/css" href="css/global.css">
 <script type="text/javascript" src="js/jquery/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="js/advertise/advertise.js"></script>
+<script type="text/javascript" src="js/popper.min/popper.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/advertise/advertise.js"></script>
 <script type="text/javascript" src="js/global.js"></script>
@@ -50,7 +52,7 @@
 	<br>
 	<div class="uploadedimage">
 		<span th:each="sliderAdvertise: ${sliderAdvertiseList}"> 
-			<img alt="" class="d-inline-block align-top advertiseimg"	th:src="@{${sliderAdvertise.filePath}}" data-toggle="tooltip" th:title="@{${sliderAdvertise.fileName}}" >
+			<img alt="" class="d-inline-block align-top advertiseimg"	th:src="@{${sliderAdvertise.filePath}}" data-toggle="tooltip" th:title="${'Start Date : '+ sliderAdvertise.startDate +'  |  End Date : '+ sliderAdvertise.endDate}" >
 		</span>
 	</div>
 	<hr>
@@ -89,7 +91,7 @@
 <br>
 	<div class="uploadedimage">
 		<span th:each="homeMarqueeAdvertise: ${homeMarqueeAdvertiseList}"> 
-			<img alt="" class="d-inline-block align-top advertiseimg"	th:src="@{${homeMarqueeAdvertise.filePath}}">
+			<img alt="" class="d-inline-block align-top advertiseimg"	th:src="@{${homeMarqueeAdvertise.filePath}}" data-toggle="tooltip" th:title="${'Start Date : '+ homeMarqueeAdvertise.startDate +'  |  End Date : '+ homeMarqueeAdvertise.endDate}">
 		</span>
 	</div>
 	
@@ -129,7 +131,7 @@
 	<br>
 	<div class="uploadedimage">
 		<span th:each="viewProfileadvertise: ${viewProfileadvertiseList}"> 
-			<img alt="" class="d-inline-block align-top advertiseimg"	th:src="@{${viewProfileadvertise.filePath}}">
+			<img alt="" class="d-inline-block align-top advertiseimg"	th:src="@{${viewProfileadvertise.filePath}}" data-toggle="tooltip" th:title="${'Start Date : '+ viewProfileadvertise.startDate +'  |  End Date : '+ viewProfileadvertise.endDate}">
 		</span>
 	</div>
 	
@@ -168,7 +170,7 @@
 <br>
 	<div class="uploadedimage">
 		<span th:each="searchAdvertise: ${searchAdvertiseList}"> 
-			<img alt="" class="d-inline-block align-top advertiseimg"	th:src="@{${searchAdvertise.filePath}}">
+			<img alt="" class="d-inline-block align-top advertiseimg"	th:src="@{${searchAdvertise.filePath}}" data-toggle="tooltip" th:title="${'Start Date : '+ searchAdvertise.startDate +'  |  End Date : '+ searchAdvertise.endDate}">
 		</span>
 	</div>
 	<hr>
