@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Caste {
+public class Samaj {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

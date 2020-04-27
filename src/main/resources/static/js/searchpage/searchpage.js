@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		$("#age").val(searchfilterData.age[0]);
 		$("#agenumber").text($("#age").val());
 		$("#gotra").val(searchfilterData.gotra[0]);
-		$("#caste").val(searchfilterData.caste[0]);
+		$("#samaj").val(searchfilterData.samaj[0]);
 	}
 
 });
@@ -114,7 +114,7 @@ function getPendingdata(searchType)
 		searchCriteria["firstName"] = $("#firstname").val();
 		searchCriteria["lastName"] =  $("#lastName").val();
 		searchCriteria["age"] =  $("#age").val();
-		searchCriteria["caste"] = $("#caste").val();
+		searchCriteria["samaj"] = $("#samaj").val();
 		searchCriteria["gotra"] =  $("#gotra").val();
 	}
 	$.ajax({

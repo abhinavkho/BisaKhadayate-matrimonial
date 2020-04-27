@@ -120,14 +120,14 @@
 		
 		
 		<div class="form-group row">
-			<label for="caste" class="col-sm-2 col-form-label lableform">Caste<span class="red">*</span></label>
+			<label for="samaj" class="col-sm-2 col-form-label lableform">Samaj<span class="red">*</span></label>
 			<div class="col-sm-6">
-				<select class="form-control fieldborder"  id="caste" >
+				<select class="form-control fieldborder"  id="samaj" >
 					<option></option>
-					<span th:each="caste: ${casteList}">
-						<span th:switch="*{user.caste}==${caste.name} ? ${true}: ${false}">
-							<span th:case="${false}"><option th:value="${caste.name}" th:text="${caste.name}"></option></span> 
-							<span th:case="${true}"><option th:value="${caste.name}" th:text="${caste.name}" selected ></option></span> 
+					<span th:each="samaj: ${samajList}">
+						<span th:switch="*{user.samaj}==${samaj.name} ? ${true}: ${false}">
+							<span th:case="${false}"><option th:value="${samaj.name}" th:text="${samaj.name}"></option></span> 
+							<span th:case="${true}"><option th:value="${samaj.name}" th:text="${samaj.name}" selected ></option></span> 
 						</span>
 					</span>
 				</select>
@@ -221,7 +221,7 @@
 		<div class="column right">
 			<h2 class="sideheader">Advertisement</h2>
 			<div id="advertisediv">
-			<marquee width="100%" direction="down">
+			<marquee width="100%" direction="down" onmouseover="this.stop();" onmouseout="this.start();">
 				<span th:each="viewProfileadvertise: ${viewProfileadvertiseList}" >
 					<table>
 						<tbody>

@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.bisaKhadayate.bean.Caste;
+import com.bisaKhadayate.bean.Samaj;
 import com.bisaKhadayate.bean.Gotra;
 import com.bisaKhadayate.bean.User;
 import com.bisaKhadayate.constant.Constant;
@@ -37,8 +37,8 @@ import com.bisaKhadayate.interfaces.services.SearchService;
 public class SearchPageController implements Constant {
 
 	@Autowired
-	@Qualifier("caste")
-	List<Caste> casteList;
+	@Qualifier("samaj")
+	List<Samaj> samajList;
 
 	@Autowired
 	@Qualifier("gotra")
@@ -61,7 +61,7 @@ public class SearchPageController implements Constant {
 
 		if (filterCriteria.get("searchType").equalsIgnoreCase(FILTER)) {
 			searchResult = searchService.searchFilterResult(filterCriteria.get("gender").charAt(0), true,
-					filterCriteria.get("firstName"), filterCriteria.get("lastName"), filterCriteria.get("caste"),
+					filterCriteria.get("firstName"), filterCriteria.get("lastName"), filterCriteria.get("samaj"),
 					filterCriteria.get("gotra"), Integer.parseInt(filterCriteria.get("age")),
 					Integer.parseInt(filterCriteria.get("startIndex")));
 		} else {
@@ -101,19 +101,19 @@ public class SearchPageController implements Constant {
 		ModelAndView mv = new ModelAndView();
 		List<Map<String, Object>> searchResult = searchService.searchFilterResult(
 				formData.get("gender").get(0).charAt(0), true, formData.get("firstName").get(0),
-				formData.get("lastName").get(0), formData.get("caste").get(0), formData.get("gotra").get(0),
+				formData.get("lastName").get(0), formData.get("samaj").get(0), formData.get("gotra").get(0),
 				Integer.parseInt(formData.get("age").get(0)), 0);
 		mv.addObject("userDetail", searchResult);
 		mv.addObject("user", userdetails);
 		mv.addObject("type", FILTER);
 		mv.addObject("totalResult",
 				searchService.searchFilterResultCount(formData.get("gender").get(0).charAt(0), true,
-						formData.get("firstName").get(0), formData.get("lastName").get(0), formData.get("caste").get(0),
+						formData.get("firstName").get(0), formData.get("lastName").get(0), formData.get("samaj").get(0),
 						formData.get("gotra").get(0), Integer.parseInt(formData.get("age").get(0))));
 		mv.addObject("gender", formData.get("gender").get(0).charAt(0));
 		mv.addObject("searchfilter", formData);
 		mv.addObject("gotraList", gotraList);
-		mv.addObject("casteList", casteList);
+		mv.addObject("samajList", samajList);
 		mv.addObject("searchAdvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(SEARCH_PAGE_ADVERTISE));
 		mv.setViewName(SEARCH_PAGE);
 		return mv;
@@ -140,7 +140,7 @@ public class SearchPageController implements Constant {
 		mv.addObject("totalResult", searchService.searchResultCount(gender, true));
 		mv.addObject("searchfilter", new HashMap<String, String>());
 		mv.addObject("gotraList", gotraList);
-		mv.addObject("casteList", casteList);
+		mv.addObject("samajList", samajList);
 		mv.addObject("searchAdvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(SEARCH_PAGE_ADVERTISE));
 		mv.setViewName(SEARCH_PAGE);
 		return mv;

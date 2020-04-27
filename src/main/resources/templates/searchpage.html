@@ -38,11 +38,11 @@
 						 <input type="range" class="form-control-range custom-range" id="age" name="age" >
 					</div>
 					<div class="form-group">
-						<label for="caste">Caste : </label> <select class="form-control"
-							id="caste" name="caste">
+						<label for="samaj">Samaj : </label> <select class="form-control"
+							id="samaj" name="samaj">
 							<option></option>
-							<span th:each="caste: ${casteList}">
-									<span><option th:value="${caste.name}" th:text="${caste.name}"></option></span> 
+							<span th:each="samaj: ${samajList}">
+									<span><option th:value="${samaj.name}" th:text="${samaj.name}"></option></span> 
 							</span>
 						</select>
 					</div>
@@ -91,7 +91,7 @@
 		<div class="column right">
 			<h2 class="sideheader">Advertisement</h2>
 			<div id="advertisediv">
-			<marquee width="100%" direction="down">
+			<marquee width="100%" direction="down" onmouseover="this.stop();" onmouseout="this.start();">
 				<span th:each="searchAdvertise: ${searchAdvertiseList}"  >
 					<table>
 						<tbody>
@@ -152,8 +152,8 @@
 							<td id="colour_mdl" class="loadfulldata" ></td>
 						</tr>
 						<tr>
-							<th>Caste</th>
-							<td id="caste_mdl" class="loadfulldata" ></td>
+							<th>samaj</th>
+							<td id="samaj_mdl" class="loadfulldata" ></td>
 						</tr>
 						<tr>
 							<th>Birth place</th>

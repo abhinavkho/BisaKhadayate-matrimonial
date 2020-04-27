@@ -1,6 +1,27 @@
 
-document.addEventListener("DOMContentLoaded", function(event) {
+var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+	 if(dd<10){
+	        dd='0'+dd
+	    } 
+	    if(mm<10){
+	        mm='0'+mm
+	    } 
 
+	today = yyyy+'-'+mm+'-'+dd;
+	
+document.addEventListener("DOMContentLoaded", function(event) {
+	
+	document.getElementById("startDateslider").setAttribute("min", today);
+	document.getElementById("endDateslider").setAttribute("min", today);
+	document.getElementById("startDatemarquee").setAttribute("min", today);
+	document.getElementById("endDatemarquee").setAttribute("min", today);
+	document.getElementById("startdateviewpro").setAttribute("min", today);
+	document.getElementById("endDateviewpro").setAttribute("min", today);
+	document.getElementById("startdatesearch").setAttribute("min", today);
+	document.getElementById("endDatesearch").setAttribute("min", today);
 
  $("#submit-photo-home-slider-advertise").click(function(){
 		  
@@ -185,4 +206,46 @@ document.addEventListener("DOMContentLoaded", function(event) {
  
  
  
+ $("#startDateslider").change(function(){
+	 $("#endDateslider").val("")
+	 $("#endDateslider").attr("min", getDate($("#startDateslider").val()));
+	});
+ 
+ $("#startDatemarquee").change(function(){
+	 $("#endDatemarquee").val("")
+	 $("#endDatemarquee").attr("min", getDate($("#startDatemarquee").val()));
+	});
+ 
+ $("#startdateviewpro").change(function(){
+	 $("#endDateviewpro").val("")
+	 $("#endDateviewpro").attr("min", getDate($("#startdateviewpro").val()));
+	});
+ 
+ $("#startdatesearch").change(function(){
+	 $("#endDatesearch").val("")
+	 $("#endDatesearch").attr("min", getDate($("#startdatesearch").val()));
+	});
+ 
+ 
 });
+
+function getDate(givenDate)
+{
+	 var date = new Date(givenDate);
+		var dd = date.getDate();
+		var mm = date.getMonth()+1; //January is 0!
+		var yyyy = date.getFullYear();
+		 if(dd<10){
+		        dd='0'+dd
+		    } 
+		    if(mm<10){
+		        mm='0'+mm
+		    } 
+
+		    date = yyyy+'-'+mm+'-'+dd;
+		    return date;
+	
+}
+
+
+
