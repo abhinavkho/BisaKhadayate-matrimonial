@@ -50,7 +50,7 @@
 	<br>
 	<div class="uploadedimage">
 		<span th:each="sliderAdvertise: ${sliderAdvertiseList}"> 
-			<img alt="" class="d-inline-block align-top advertiseimg"	th:src="@{${sliderAdvertise.filePath}}" data-toggle="tooltip" th:title="@{${sliderAdvertise.fileName sliderAdvertise.startDate}}" >
+			<img alt="" class="d-inline-block align-top advertiseimg"	th:src="@{${sliderAdvertise.filePath}}" data-toggle="tooltip" th:title="@{${sliderAdvertise.fileName}}" >
 		</span>
 	</div>
 	<hr>
