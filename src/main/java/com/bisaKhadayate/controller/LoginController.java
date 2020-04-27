@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bisaKhadayate.bean.User;
 import com.bisaKhadayate.constant.Constant;
+import com.bisaKhadayate.interfaces.services.ManageAdvertiseService;
 import com.bisaKhadayate.interfaces.services.UserService;
 
 @Controller
@@ -23,6 +24,9 @@ public class LoginController implements Constant {
 
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	ManageAdvertiseService manageAdvertiseService;
 
 	@RequestMapping("/")
 	public String loginPage() {
@@ -43,6 +47,8 @@ public class LoginController implements Constant {
 			userdetails.put("username", user.getUserId());
 			userdetails.put("password", user.getPassword());
 			request.getSession().setAttribute("userDetails", user);
+			mv.addObject("sliderAdvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(HOME_SLIDER_ADVERTISE));
+			mv.addObject("homeMarqueeAdvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(HOME_MARQUEE_ADVERTISE));
 			mv.setViewName(HOME);
 			mv.addObject("user", user);
 		}
@@ -62,7 +68,12 @@ public class LoginController implements Constant {
 	public ModelAndView homePage(HttpServletRequest request) {
 		User userdetails = (User) request.getSession().getAttribute("userDetails");
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName(userdetails == null ? LOGIN : HOME);
+		String viewName = userdetails == null ? LOGIN : HOME;
+		if (viewName == HOME) {
+			mv.addObject("sliderAdvertiseList",	manageAdvertiseService.getImageDetailByAdvertiseType(HOME_SLIDER_ADVERTISE));
+			mv.addObject("homeMarqueeAdvertiseList",manageAdvertiseService.getImageDetailByAdvertiseType(HOME_MARQUEE_ADVERTISE));
+		}
+		mv.setViewName(viewName);
 		mv.addObject("user", userdetails);
 		return mv;
 	}

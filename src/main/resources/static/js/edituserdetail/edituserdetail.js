@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		  
 		  if($("#fileupload").val().trim()!="")
 		  {
-			var extensionArray=["JPG","JPEG","PNG","PDF"];
+			var extensionArray=["JPG","JPEG","PNG"];
 			var filePath = $("#fileupload").val();
 			var splitFilePath=filePath.split(".");
 			var extention=splitFilePath[splitFilePath.length-1];

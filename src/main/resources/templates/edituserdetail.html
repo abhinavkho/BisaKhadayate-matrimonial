@@ -220,19 +220,20 @@
 		</div>
 		<div class="column right">
 			<h2 class="sideheader">Advertisement</h2>
-				<span th:each="i :${#numbers.sequence( 1, 5)}" >
+			<div id="advertisediv">
+			<marquee width="100%" direction="down">
+				<span th:each="viewProfileadvertise: ${viewProfileadvertiseList}" >
 					<table>
 						<tbody>
 							<tr>
 								<td><img alt="" class="d-inline-block align-top editaddverimg"
-									src="images/groom.jpg"></td>
-							</tr>
-							<tr>
-								<th>bjhdkfj</th>
+									th:src="@{${viewProfileadvertise.filePath}}"></td>
 							</tr>
 						</tbody>
 					</table>
 				</span>
+				</marquee>
+				</div>
 		</div>
 	</div>
 

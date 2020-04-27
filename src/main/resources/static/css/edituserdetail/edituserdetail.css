@@ -98,3 +98,10 @@ background-color: rebeccapurple;
 	height: 280px;
 	width : 100%;
 }
+
+#advertisediv{
+	
+	height: 600px;
+	width : 100%;
+	overflow: hidden;
+}

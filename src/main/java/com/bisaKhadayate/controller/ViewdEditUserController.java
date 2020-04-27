@@ -22,6 +22,7 @@ import com.bisaKhadayate.bean.Gotra;
 import com.bisaKhadayate.bean.User;
 import com.bisaKhadayate.constant.Constant;
 import com.bisaKhadayate.interfaces.services.CommonUserDetailService;
+import com.bisaKhadayate.interfaces.services.ManageAdvertiseService;
 import com.bisaKhadayate.interfaces.services.UserService;
 import com.bisaKhadayate.interfaces.services.ViewdEditUserService;
 
@@ -44,6 +45,9 @@ public class ViewdEditUserController implements Constant {
 	
 	@Autowired
 	CommonUserDetailService commonUserDetailService;
+	
+	@Autowired
+	ManageAdvertiseService manageAdvertiseService;
 
 	@RequestMapping(value = "editviewUser")
 	public ModelAndView viewEditUserDetail(HttpServletRequest request) {
@@ -57,11 +61,12 @@ public class ViewdEditUserController implements Constant {
 			imagePathListMap.put(image[image.length - 1], imagePath);
 		}
 		mv.addObject("imagePathListMap", imagePathListMap);
-		mv.setViewName(EDIT_UESR_DETAILS);
 		mv.addObject("user", user);
 		mv.addObject("gender", Character.toString(user.getGender()));
 		mv.addObject("gotraList", gotraList);
 		mv.addObject("casteList", casteList);
+		mv.addObject("viewProfileadvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(VIEW_PROFILE_ADDVERTISE));
+		mv.setViewName(EDIT_UESR_DETAILS);
 		return mv;
 	}
 
@@ -92,6 +97,7 @@ public class ViewdEditUserController implements Constant {
 		mv.addObject("gender", Character.toString(user.getGender()));
 		mv.addObject("gotraList", gotraList);
 		mv.addObject("casteList", casteList);
+		mv.addObject("viewProfileadvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(VIEW_PROFILE_ADDVERTISE));
 		mv.setViewName(EDIT_UESR_DETAILS);
 		return mv;
 	}
@@ -113,6 +119,7 @@ public class ViewdEditUserController implements Constant {
 		mv.addObject("gender", Character.toString(user.getGender()));
 		mv.addObject("gotraList", gotraList);
 		mv.addObject("casteList", casteList);
+		mv.addObject("viewProfileadvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(VIEW_PROFILE_ADDVERTISE));
 		mv.setViewName(EDIT_UESR_DETAILS);
 		return mv;
 	}
