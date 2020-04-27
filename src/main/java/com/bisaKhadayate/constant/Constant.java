@@ -35,4 +35,21 @@ public interface Constant {
 	public final static String MAIL_SUCCESS_MSG= "Mail has send successfully";
 	
 	public final static String MAIL_ERROR_MSG= "Not able to send email ";
+	
+	public final static String PROJECT_NAME = "BisaKhadayate";
+	
+	public final static String HOME_SLIDER_ADVERTISE = "Slider";
+	
+	public final static String HOME_MARQUEE_ADVERTISE = "Home_marquee";
+	
+	public final static String VIEW_PROFILE_ADDVERTISE = "view_profile_advertise";
+	
+	public final static String SEARCH_PAGE_ADVERTISE = "Search_page_advertise";
+	
+	public final static String IMAGE_UPLOADED_SUCCESS ="Image uploaded successfully";
+	
+	
+	
+	
+	
 }

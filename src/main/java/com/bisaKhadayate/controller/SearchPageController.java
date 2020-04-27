@@ -30,6 +30,7 @@ import com.bisaKhadayate.bean.Gotra;
 import com.bisaKhadayate.bean.User;
 import com.bisaKhadayate.constant.Constant;
 import com.bisaKhadayate.interfaces.services.CommonUserDetailService;
+import com.bisaKhadayate.interfaces.services.ManageAdvertiseService;
 import com.bisaKhadayate.interfaces.services.SearchService;
 
 @Controller
@@ -48,6 +49,9 @@ public class SearchPageController implements Constant {
 
 	@Autowired
 	SearchService searchService;
+	
+	@Autowired
+	ManageAdvertiseService manageAdvertiseService;
 
 	@PostMapping(value = "getpendingdata")
 	@ResponseBody
@@ -107,10 +111,11 @@ public class SearchPageController implements Constant {
 						formData.get("firstName").get(0), formData.get("lastName").get(0), formData.get("caste").get(0),
 						formData.get("gotra").get(0), Integer.parseInt(formData.get("age").get(0))));
 		mv.addObject("gender", formData.get("gender").get(0).charAt(0));
-		mv.setViewName(SEARCH_PAGE);
 		mv.addObject("searchfilter", formData);
 		mv.addObject("gotraList", gotraList);
 		mv.addObject("casteList", casteList);
+		mv.addObject("searchAdvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(SEARCH_PAGE_ADVERTISE));
+		mv.setViewName(SEARCH_PAGE);
 		return mv;
 	}
 
@@ -133,10 +138,11 @@ public class SearchPageController implements Constant {
 		mv.addObject("gender", gender);
 		mv.addObject("type", NON_FILTER);
 		mv.addObject("totalResult", searchService.searchResultCount(gender, true));
-		mv.setViewName(SEARCH_PAGE);
 		mv.addObject("searchfilter", new HashMap<String, String>());
 		mv.addObject("gotraList", gotraList);
 		mv.addObject("casteList", casteList);
+		mv.addObject("searchAdvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(SEARCH_PAGE_ADVERTISE));
+		mv.setViewName(SEARCH_PAGE);
 		return mv;
 	}
 

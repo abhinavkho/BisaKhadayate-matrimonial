@@ -13,67 +13,169 @@
 <script type="text/javascript" src="js/advertise/advertise.js"></script>
 <script type="text/javascript" src="js/global.js"></script>
 </head>
-<body>
+<body id="bodydiv">
 	<span id="newheader"></span>
 	<span th:replace="header"></span>
 	<br>
 	<br>
-<h2 class="text-center title-font" ><b>Home Slider Advertise </b></h2>
+
+	<h2 class="text-center title-font">
+		<b>Home Slider Advertise </b>
+	</h2>
 	<form enctype="multipart/form-data" id="homeslideradvertise"
 		method="post" action="homeslideradvertise" class="advertiseuploadform">
 		<div id="filehomeslideradvertisediv">
-			<input type="file" class="fileupload" id="filehomeslideradvertise"
-				name="filehomeslideradvertise"><span class="red"
-				id="filehomeslideradvertise_err"></span>
-		</div>
-		<br>
-		<input type="button" class=" btn btn-primary" id="submitphotohomeslideradvertise"	value="Upload">
-	</form>
 
+			<div class="form-group col-md-2">
+				<label for="filehomeslideradvertise">Choose advertise <span
+					class="red">*</span></label> <input type="file" class="fileupload"
+					id="filehomeslideradvertise" name="imageFile"><span
+					class="red" id="filehomeslideradvertise_err"></span>
+			</div>
+			<div class="form-group col-md-2">
+				<label for="startDateslider">Start Date <span class="red">*</span>
+				</label> <input class="form-control fieldui" type="date" name="startDate"
+					id="startDateslider"> <span class="red" id="startDateslider_err"></span>
+			</div>
+			<div class="form-group col-md-2">
+				<label for="endDateslider">End Date <span class="red">*</span>
+				</label> <input class="form-control fieldui" type="date" name="endDate"
+					id="endDateslider"> <span class="red"
+					id="endDateslider_err"></span>
+			</div>
+		</div>
+		<br> <input type="button" class=" btn btn-primary"
+			id="submit-photo-home-slider-advertise" value="Upload">
+	</form>
+	<br>
+	<div class="uploadedimage">
+		<span th:each="sliderAdvertise: ${sliderAdvertiseList}"> 
+			<img alt="" class="d-inline-block align-top advertiseimg"	th:src="@{${sliderAdvertise.filePath}}" data-toggle="tooltip" th:title="@{${sliderAdvertise.fileName sliderAdvertise.startDate}}" >
+		</span>
+	</div>
 	<hr>
-<h2 class="text-center title-font" ><b>Home Marquee Advertise </b></h2>
+
+	<h2 class="text-center title-font">
+		<b>Home Marquee Advertise </b>
+	</h2>
 	<form enctype="multipart/form-data" id="homemarqueeadvertise"
-		method="post" action="homemarqueeadvertise" class="advertiseuploadform">
+		method="post" action="homemarqueeadvertise"
+		class="advertiseuploadform">
 		<div id="filehomemarqueeadvertisediv">
-			<input type="file" class="fileupload" id="filehomemarqueeadvertise"
-				name="filehomemarqueeadvertise"><span class="red"
-				id="filehomemarqueeadvertise_err"></span>
+
+			<div class="form-group col-md-2">
+				<label for="filehomemarqueeadvertise">Choose advertise <span
+					class="red">*</span></label> <input type="file" class="fileupload"
+					id="filehomemarqueeadvertise" name="imageFile"><span
+					class="red" id="filehomemarqueeadvertise_err"></span>
+			</div>
+			<div class="form-group col-md-2">
+				<label for="startDatemarquee">Start Date <span class="red">*</span>
+				</label> <input class="form-control fieldui" type="date" name="startDate"
+					id="startDatemarquee"> <span class="red"
+					id="startDatemarquee_err"></span>
+			</div>
+			<div class="form-group col-md-2">
+				<label for="endDatemarquee">End Date <span class="red">*</span>
+				</label> <input class="form-control fieldui" type="date" name="endDate"
+					id="endDatemarquee"> <span class="red"
+					id="endDatemarquee_err"></span>
+			</div>
 		</div>
-		<br>
-		<input type="button" class=" btn btn-primary" id="submitphotohomemarqueeadvertise"	value="Upload">
+		<br> <input type="button" class=" btn btn-primary"
+			id="submit-photo-home-marquee-advertise" value="Upload">
 	</form>
 
+<br>
+	<div class="uploadedimage">
+		<span th:each="homeMarqueeAdvertise: ${homeMarqueeAdvertiseList}"> 
+			<img alt="" class="d-inline-block align-top advertiseimg"	th:src="@{${homeMarqueeAdvertise.filePath}}">
+		</span>
+	</div>
+	
 	<hr>
-<h2 class="text-center title-font" ><b>View Profile Advertise </b></h2>
+	
+	<h2 class="text-center title-font">
+		<b>View Profile Advertise </b>
+	</h2>
 	<form enctype="multipart/form-data" id="viewprofileadvertise"
-		method="post" action="viewprofileadvertise" class="advertiseuploadform">
+		method="post" action="viewprofileadvertise"
+		class="advertiseuploadform">
 		<div id="fileviewprofileadvertisediv">
-			<input type="file" class="fileupload" id="fileviewprofileadvertise"
-				name="fileviewprofileadvertise"><span class="red"
-				id="fileviewprofileadvertise_err"></span>
+
+			<div class="form-group col-md-2">
+				<label for="fileviewprofileadvertise">Choose advertise <span
+					class="red">*</span></label> <input type="file" class="fileupload"
+					id="fileviewprofileadvertise" name="imageFile"><span
+					class="red" id="fileviewprofileadvertise_err"></span>
+			</div>
+			<div class="form-group col-md-2">
+				<label for="startdateviewpro">Start Date <span class="red">*</span>
+				</label> <input class="form-control fieldui" type="date" name="startDate"
+					id="startdateviewpro"> <span class="red"
+					id="startdateviewpro_err"></span>
+			</div>
+			<div class="form-group col-md-2">
+				<label for="endDateviewpro">End Date <span class="red">*</span>
+				</label> <input class="form-control fieldui" type="date" name="endDate"
+					id="endDateviewpro"> <span class="red"
+					id="endDateviewpro_err"></span>
+			</div>
 		</div>
-		<br>
-		<input type="button" class=" btn btn-primary" id="submitphotoviewprofileadvertise"	value="Upload">
+		<br> <input type="button" class=" btn btn-primary"
+			id="submit-photo-view-profile-advertise" value="Upload">
 	</form>
 
+	<br>
+	<div class="uploadedimage">
+		<span th:each="viewProfileadvertise: ${viewProfileadvertiseList}"> 
+			<img alt="" class="d-inline-block align-top advertiseimg"	th:src="@{${viewProfileadvertise.filePath}}">
+		</span>
+	</div>
+	
 	<hr>
-<h2 class="text-center title-font" ><b>Search Page Advertise </b></h2>
+	
+	<h2 class="text-center title-font">
+		<b>Search Page Advertise </b>
+	</h2>
 	<form enctype="multipart/form-data" id="searchpageadvertise"
 		method="post" action="searchpageadvertise" class="advertiseuploadform">
 		<div id="filesearchpageadvertisediv">
-			<input type="file" class="fileupload" id="filesearchpageadvertise"
-				name="filesearchpageadvertise"><span class="red"
-				id="filesearchpageadvertise_err"></span>
+
+			<div class="form-group col-md-2">
+				<label for="fileviewprofileadvertise">Choose advertise <span
+					class="red">*</span></label> <input type="file" class="fileupload"
+					id="filesearchpageadvertise" name="imageFile"><span
+					class="red" id="filesearchpageadvertise_err"></span>
+			</div>
+			<div class="form-group col-md-2">
+				<label for="startdatesearch">Start Date <span class="red">*</span>
+				</label> <input class="form-control fieldui" type="date" name="startDate"
+					id="startdatesearch"> <span class="red"
+					id="startdatesearch_err"></span>
+			</div>
+			<div class="form-group col-md-2">
+				<label for="endDatesearch">End Date <span class="red">*</span>
+				</label> <input class="form-control fieldui" type="date" name="endDate"
+					id="endDatesearch"> <span class="red"
+					id="endDatesearch_err"></span>
+			</div>
 		</div>
-		<br>
-		<input type="button" class=" btn btn-primary" id="submitphotosearchpageadvertise"	value="Upload">
+		<br> <input type="button" class=" btn btn-primary"
+			id="submit-photo-search-page-advertise" value="Upload">
 	</form>
 
+<br>
+	<div class="uploadedimage">
+		<span th:each="searchAdvertise: ${searchAdvertiseList}"> 
+			<img alt="" class="d-inline-block align-top advertiseimg"	th:src="@{${searchAdvertise.filePath}}">
+		</span>
+	</div>
 	<hr>
-
+	
 	<br>
 	<br>
 	<span th:replace="footer"></span>
-
+	<span th:replace="loader"></span>
 </body>
 </html>

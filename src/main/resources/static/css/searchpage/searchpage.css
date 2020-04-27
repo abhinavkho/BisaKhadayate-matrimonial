@@ -101,8 +101,6 @@ background-color: rebeccapurple;
 	width: 498px;
 }
 
-
-
 .searchaddverimg
 {
 	padding:2%;
@@ -123,4 +121,11 @@ background-color: rebeccapurple;
 .loadfulldata{
 	position: relative; 
 	left: 15%;"
+}
+
+#advertisediv{
+	
+	height: 600px;
+	width : 100%;
+	overflow: hidden;
 }

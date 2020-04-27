@@ -11,3 +11,17 @@
 .title-font{
 	color: rebeccapurple;
 }
+
+.advertiseimg
+{
+	padding:2%;
+	height :250px;
+	width : 250px;
+}
+
+.uploadedimage{
+overflow: auto;
+padding-right:2%;
+padding-left:2%;
+}
+
