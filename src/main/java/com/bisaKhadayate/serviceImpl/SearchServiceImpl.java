@@ -108,9 +108,9 @@ public class SearchServiceImpl implements SearchService, Constant {
 				+ "						<tr>\r\n" + "							<th>Colour</th>\r\n"
 				+ "							<td id=\"colour_mdl\"  style=\" position: relative; left: 20%;\" >"
 				+ user.getColour() + "</td>\r\n" + "						</tr>\r\n"
-				+ "						<tr>\r\n" + "							<th>Caste</th>\r\n"
-				+ "							<td id=\"caste_mdl\" style=\" position: relative; left: 20%;\" >"
-				+ user.getCaste() + "</td>\r\n" + "						</tr>\r\n" + "						<tr>\r\n"
+				+ "						<tr>\r\n" + "							<th>Samaj</th>\r\n"
+				+ "							<td id=\"samaj_mdl\" style=\" position: relative; left: 20%;\" >"
+				+ user.getSamaj() + "</td>\r\n" + "						</tr>\r\n" + "						<tr>\r\n"
 				+ "							<th>Birth place</th>\r\n"
 				+ "							<td id=\"placeOfBirth_mdl\"  style=\" position: relative; left: 20%;\" >"
 				+ user.getPlaceOfBirth() + "</td>\r\n" + "						</tr>\r\n"
@@ -162,15 +162,15 @@ public class SearchServiceImpl implements SearchService, Constant {
 	@Override
 	@Transactional
 	public List<Map<String, Object>> searchFilterResult(Character gender, boolean isActive, String firstName,
-			String lastName, String caste, String gotra, int age, int index) {
-		return userDao.searchFilterResult(gender, isActive, firstName, lastName, caste, gotra, age, index);
+			String lastName, String samaj, String gotra, int age, int index) {
+		return userDao.searchFilterResult(gender, isActive, firstName, lastName, samaj, gotra, age, index);
 	}
 
 	@Override
 	@Transactional
 	public Integer searchFilterResultCount(Character gender, boolean isActive, String firstName, String lastName,
-			String caste, String gotra, int age) {
-		return userDao.searchFilterResultCount(gender, isActive, firstName, lastName, caste, gotra, age);
+			String samaj, String gotra, int age) {
+		return userDao.searchFilterResultCount(gender, isActive, firstName, lastName, samaj, gotra, age);
 	}
 
 	@Override

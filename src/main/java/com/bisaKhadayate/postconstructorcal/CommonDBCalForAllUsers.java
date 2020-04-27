@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.bisaKhadayate.bean.Caste;
+import com.bisaKhadayate.bean.Samaj;
 import com.bisaKhadayate.bean.Gotra;
 import com.bisaKhadayate.interfaces.services.CommonUserDetailService;
 
@@ -23,10 +23,10 @@ public class CommonDBCalForAllUsers {
 		return commonUserDetail.getGotra();
 	}
 	
-	@Bean(name="caste")
-	public List<Caste> getCaste()
+	@Bean(name="samaj")
+	public List<Samaj> getSamaj()
 	{
-		return commonUserDetail.getCaste();
+		return commonUserDetail.getSamaj();
 	}
 
 }

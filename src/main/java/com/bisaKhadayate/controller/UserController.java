@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.bisaKhadayate.bean.Caste;
+import com.bisaKhadayate.bean.Samaj;
 import com.bisaKhadayate.bean.Gotra;
 import com.bisaKhadayate.bean.User;
 import com.bisaKhadayate.constant.Constant;
@@ -29,8 +29,8 @@ public class UserController implements Constant {
 	CreateUserService createUserService;
 
 	@Autowired
-	@Qualifier("caste")
-	List<Caste> casteList;
+	@Qualifier("samaj")
+	List<Samaj> samajList;
 
 	@Autowired
 	@Qualifier("gotra")
@@ -45,7 +45,7 @@ public class UserController implements Constant {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("filesName", commonUserDetailService.getImagesFile(user));
 		mv.addObject("gotraList", gotraList);
-		mv.addObject("casteList", casteList);
+		mv.addObject("samajList", samajList);
 		mv.addObject(user);
 		mv.setViewName(CREATE_USER);
 		return mv;

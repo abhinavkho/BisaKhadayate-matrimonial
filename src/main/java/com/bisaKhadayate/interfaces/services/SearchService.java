@@ -15,9 +15,9 @@ public interface SearchService {
 	String sendmail();
 
 	List<Map<String, Object>> searchFilterResult(Character gender, boolean isActive, String firstName, String lastName,
-			String caste, String gotra, int age, int index);
+			String samaj, String gotra, int age, int index);
 
-	Integer searchFilterResultCount(Character gender, boolean isActive, String firstName, String lastName, String caste,
+	Integer searchFilterResultCount(Character gender, boolean isActive, String firstName, String lastName, String samaj,
 			String gotra, int age);
 
 	List<Map<String, Object>> searchResult(Character gender, int index);

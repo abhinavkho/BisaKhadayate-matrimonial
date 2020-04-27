@@ -11,11 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
-import com.bisaKhadayate.bean.Caste;
+import com.bisaKhadayate.bean.Samaj;
 import com.bisaKhadayate.bean.Gotra;
 import com.bisaKhadayate.bean.User;
 import com.bisaKhadayate.constant.Constant;
-import com.bisaKhadayate.interfaces.dao.CasteDao;
+import com.bisaKhadayate.interfaces.dao.SamajDao;
 import com.bisaKhadayate.interfaces.dao.GotraDao;
 import com.bisaKhadayate.interfaces.services.CommonUserDetailService;
 
@@ -26,7 +26,7 @@ public class CommonUserDetailServiceImpl  implements CommonUserDetailService , C
 	GotraDao gotraDao;
 	
 	@Autowired
-	CasteDao casteDao;
+	SamajDao samajDao;
 
 	@Override
 	@Transactional
@@ -36,8 +36,8 @@ public class CommonUserDetailServiceImpl  implements CommonUserDetailService , C
 
 	@Override
 	@Transactional
-	public List<Caste> getCaste() {
-		return (List<Caste>) casteDao.findAll();
+	public List<Samaj> getSamaj() {
+		return (List<Samaj>) samajDao.findAll();
 	}
 
 	@Override

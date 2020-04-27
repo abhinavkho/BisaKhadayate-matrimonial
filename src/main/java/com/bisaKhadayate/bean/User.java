@@ -54,7 +54,7 @@ public class User  implements Serializable{
 	private String highestEducation;
 	
 	@Column
-	private String caste;
+	private String samaj;
 	
 	@Column(length = 300)
 	private String occupation;
@@ -256,12 +256,12 @@ public class User  implements Serializable{
 		this.highestEducation = highestEducation;
 	}
 
-	public String getCaste() {
-		return caste;
+	public String getSamaj() {
+		return samaj;
 	}
 
-	public void setCaste(String caste) {
-		this.caste = caste;
+	public void setSamaj(String samaj) {
+		this.samaj = samaj;
 	}
 
 	public String getOccupation() {
