@@ -114,7 +114,7 @@ public class SearchPageController implements Constant {
 		mv.addObject("searchfilter", formData);
 		mv.addObject("gotraList", gotraList);
 		mv.addObject("samajList", samajList);
-		mv.addObject("searchAdvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(SEARCH_PAGE_ADVERTISE));
+		mv.addObject("searchAdvertiseList", manageAdvertiseService.getImageDetailByAdvertiseTypeAndDate(SEARCH_PAGE_ADVERTISE));
 		mv.setViewName(SEARCH_PAGE);
 		return mv;
 	}
@@ -141,7 +141,7 @@ public class SearchPageController implements Constant {
 		mv.addObject("searchfilter", new HashMap<String, String>());
 		mv.addObject("gotraList", gotraList);
 		mv.addObject("samajList", samajList);
-		mv.addObject("searchAdvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(SEARCH_PAGE_ADVERTISE));
+		mv.addObject("searchAdvertiseList", manageAdvertiseService.getImageDetailByAdvertiseTypeAndDate(SEARCH_PAGE_ADVERTISE));
 		mv.setViewName(SEARCH_PAGE);
 		return mv;
 	}

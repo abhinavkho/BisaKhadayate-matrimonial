@@ -52,6 +52,7 @@
 	<br>
 	<div class="uploadedimage">
 		<span th:each="sliderAdvertise: ${sliderAdvertiseList}"> 
+			<span class="close" th:onclick="|showCross('${sliderAdvertise.id}')|"> X</span>
 			<img alt="" class="d-inline-block align-top advertiseimg"	th:src="@{${sliderAdvertise.filePath}}" data-toggle="tooltip" th:title="${'Start Date : '+ sliderAdvertise.startDate +'  |  End Date : '+ sliderAdvertise.endDate}" >
 		</span>
 	</div>
@@ -91,6 +92,7 @@
 <br>
 	<div class="uploadedimage">
 		<span th:each="homeMarqueeAdvertise: ${homeMarqueeAdvertiseList}"> 
+			<span class="close" th:onclick="|showCross('${homeMarqueeAdvertise.id}')|"> X</span>
 			<img alt="" class="d-inline-block align-top advertiseimg"	th:src="@{${homeMarqueeAdvertise.filePath}}" data-toggle="tooltip" th:title="${'Start Date : '+ homeMarqueeAdvertise.startDate +'  |  End Date : '+ homeMarqueeAdvertise.endDate}">
 		</span>
 	</div>
@@ -131,6 +133,7 @@
 	<br>
 	<div class="uploadedimage">
 		<span th:each="viewProfileadvertise: ${viewProfileadvertiseList}"> 
+			<span class="close" th:onclick="|showCross('${viewProfileadvertise.id}')|"> X</span>
 			<img alt="" class="d-inline-block align-top advertiseimg"	th:src="@{${viewProfileadvertise.filePath}}" data-toggle="tooltip" th:title="${'Start Date : '+ viewProfileadvertise.startDate +'  |  End Date : '+ viewProfileadvertise.endDate}">
 		</span>
 	</div>
@@ -170,6 +173,7 @@
 <br>
 	<div class="uploadedimage">
 		<span th:each="searchAdvertise: ${searchAdvertiseList}"> 
+			 <span class="close" th:onclick="|showCross('${searchAdvertise.id}')|"> X</span>
 			<img alt="" class="d-inline-block align-top advertiseimg"	th:src="@{${searchAdvertise.filePath}}" data-toggle="tooltip" th:title="${'Start Date : '+ searchAdvertise.startDate +'  |  End Date : '+ searchAdvertise.endDate}">
 		</span>
 	</div>

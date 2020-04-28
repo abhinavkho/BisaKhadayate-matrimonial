@@ -145,7 +145,6 @@ public class SearchServiceImpl implements SearchService, Constant {
 		MimeMessage mimeMessage = javaMailSender.createMimeMessage();
 		try {
 			MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
-
 			mimeMessageHelper.setSubject("Test");
 			mimeMessageHelper.setFrom(new InternetAddress("ab9khoti@gmail.com", "abhianv "));
 			mimeMessageHelper.setTo("ab9khoti@gmail.com");

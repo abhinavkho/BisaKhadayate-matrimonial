@@ -63,4 +63,17 @@ public class ManageAdvertiseServiceImpl implements ManageAdvertiseService , Cons
 		return advertiseDao.getImageDetailByAdvertiseType(advertiseType);
 	}
 
+	@Override
+	@Transactional
+	public List<Advertise> getImageDetailByAdvertiseTypeAndDate(String advertiseType) {
+		return advertiseDao.getImageDetailByAdvertiseTypeAndDate(advertiseType);
+	}
+
+	@Override
+	@Transactional
+	public void deleteAdvertiseById(Integer id) {
+		advertiseDao.deleteById(id);
+		
+	}
+
 }

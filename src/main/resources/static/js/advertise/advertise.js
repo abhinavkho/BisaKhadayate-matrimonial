@@ -226,25 +226,47 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	 $("#endDatesearch").attr("min", getDate($("#startdatesearch").val()));
 	});
  
+
+ 
  
 });
 
-function getDate(givenDate)
-{
-	 var date = new Date(givenDate);
-		var dd = date.getDate();
-		var mm = date.getMonth()+1; //January is 0!
-		var yyyy = date.getFullYear();
-		 if(dd<10){
-		        dd='0'+dd
-		    } 
-		    if(mm<10){
-		        mm='0'+mm
-		    } 
 
-		    date = yyyy+'-'+mm+'-'+dd;
-		    return date;
+function showCross(id)
+{
 	
+	$.ajax({
+		url : "deleteadvertise/"+id,
+		type: "POST",
+		success : function(result) {
+			$("#pageloader").css("display", "block");
+			$("#bodydiv").css("opacity", ".5");
+			location.href="createadvertise";
+		},
+		error: function (jqXHR, textStatus, errorThrown)
+	    {
+	 
+	    }
+	});
+	
+}
+
+function getDate(givenDate)
+ {
+	var date = new Date(givenDate);
+	var dd = date.getDate();
+	var mm = date.getMonth() + 1; //January is 0!
+	var yyyy = date.getFullYear();
+	if (dd < 10) {
+		dd = '0' + dd
+	}
+	if (mm < 10) {
+		mm = '0' + mm
+	}
+
+	date = yyyy + '-' + mm + '-' + dd;
+	return date;
+
 }
 
 
