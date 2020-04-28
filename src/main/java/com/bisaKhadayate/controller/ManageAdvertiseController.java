@@ -2,12 +2,18 @@ package com.bisaKhadayate.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bisaKhadayate.bean.Advertise;
@@ -80,6 +86,21 @@ public class ManageAdvertiseController implements Constant {
 	public ModelAndView searchPageAdvertise(@ModelAttribute Advertise advertise,HttpSession session) {
 		User userdetails = (User) session.getAttribute("userDetails");
 		manageAdvertiseService.uploadAdvertise(userdetails, advertise,SEARCH_PAGE_ADVERTISE);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("user", userdetails);
+		mv.addObject("sliderAdvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(HOME_SLIDER_ADVERTISE));
+		mv.addObject("viewProfileadvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(VIEW_PROFILE_ADDVERTISE));
+		mv.addObject("searchAdvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(SEARCH_PAGE_ADVERTISE));
+		mv.addObject("homeMarqueeAdvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(HOME_MARQUEE_ADVERTISE));
+		mv.setViewName(ADVERTISE);
+		return mv;
+	}
+	
+	@RequestMapping(value = "deleteadvertise/{id}", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView deleteAdvertise(@PathVariable Integer id, HttpSession session) {
+		User userdetails = (User) session.getAttribute("userDetails");
+		manageAdvertiseService.deleteAdvertiseById(id);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("user", userdetails);
 		mv.addObject("sliderAdvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(HOME_SLIDER_ADVERTISE));

@@ -47,8 +47,8 @@ public class LoginController implements Constant {
 			userdetails.put("username", user.getUserId());
 			userdetails.put("password", user.getPassword());
 			request.getSession().setAttribute("userDetails", user);
-			mv.addObject("sliderAdvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(HOME_SLIDER_ADVERTISE));
-			mv.addObject("homeMarqueeAdvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(HOME_MARQUEE_ADVERTISE));
+			mv.addObject("sliderAdvertiseList", manageAdvertiseService.getImageDetailByAdvertiseTypeAndDate(HOME_SLIDER_ADVERTISE));
+			mv.addObject("homeMarqueeAdvertiseList", manageAdvertiseService.getImageDetailByAdvertiseTypeAndDate(HOME_MARQUEE_ADVERTISE));
 			mv.setViewName(HOME);
 			mv.addObject("user", user);
 		}
@@ -70,8 +70,8 @@ public class LoginController implements Constant {
 		ModelAndView mv = new ModelAndView();
 		String viewName = userdetails == null ? LOGIN : HOME;
 		if (viewName == HOME) {
-			mv.addObject("sliderAdvertiseList",	manageAdvertiseService.getImageDetailByAdvertiseType(HOME_SLIDER_ADVERTISE));
-			mv.addObject("homeMarqueeAdvertiseList",manageAdvertiseService.getImageDetailByAdvertiseType(HOME_MARQUEE_ADVERTISE));
+			mv.addObject("sliderAdvertiseList",	manageAdvertiseService.getImageDetailByAdvertiseTypeAndDate(HOME_SLIDER_ADVERTISE));
+			mv.addObject("homeMarqueeAdvertiseList",manageAdvertiseService.getImageDetailByAdvertiseTypeAndDate(HOME_MARQUEE_ADVERTISE));
 		}
 		mv.setViewName(viewName);
 		mv.addObject("user", userdetails);

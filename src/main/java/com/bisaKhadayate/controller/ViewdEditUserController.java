@@ -65,7 +65,7 @@ public class ViewdEditUserController implements Constant {
 		mv.addObject("gender", Character.toString(user.getGender()));
 		mv.addObject("gotraList", gotraList);
 		mv.addObject("samajList", samajList);
-		mv.addObject("viewProfileadvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(VIEW_PROFILE_ADDVERTISE));
+		mv.addObject("viewProfileadvertiseList", manageAdvertiseService.getImageDetailByAdvertiseTypeAndDate(VIEW_PROFILE_ADDVERTISE));
 		mv.setViewName(EDIT_UESR_DETAILS);
 		return mv;
 	}
@@ -97,7 +97,7 @@ public class ViewdEditUserController implements Constant {
 		mv.addObject("gender", Character.toString(user.getGender()));
 		mv.addObject("gotraList", gotraList);
 		mv.addObject("samajList", samajList);
-		mv.addObject("viewProfileadvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(VIEW_PROFILE_ADDVERTISE));
+		mv.addObject("viewProfileadvertiseList", manageAdvertiseService.getImageDetailByAdvertiseTypeAndDate(VIEW_PROFILE_ADDVERTISE));
 		mv.setViewName(EDIT_UESR_DETAILS);
 		return mv;
 	}
@@ -119,7 +119,7 @@ public class ViewdEditUserController implements Constant {
 		mv.addObject("gender", Character.toString(user.getGender()));
 		mv.addObject("gotraList", gotraList);
 		mv.addObject("samajList", samajList);
-		mv.addObject("viewProfileadvertiseList", manageAdvertiseService.getImageDetailByAdvertiseType(VIEW_PROFILE_ADDVERTISE));
+		mv.addObject("viewProfileadvertiseList", manageAdvertiseService.getImageDetailByAdvertiseTypeAndDate(VIEW_PROFILE_ADDVERTISE));
 		mv.setViewName(EDIT_UESR_DETAILS);
 		return mv;
 	}
