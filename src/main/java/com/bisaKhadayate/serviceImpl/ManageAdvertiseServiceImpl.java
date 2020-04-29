@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -72,8 +73,21 @@ public class ManageAdvertiseServiceImpl implements ManageAdvertiseService , Cons
 	@Override
 	@Transactional
 	public void deleteAdvertiseById(Integer id) {
+		Optional<Advertise> advertise = advertiseDao.findById(id);
+		if (advertise.isPresent()) {
+			File tmpDir;
+			try {
+				tmpDir = new ClassPathResource("/static").getFile();
+				String path = tmpDir.getAbsolutePath() + "\\" + advertise.get().getFilePath().replace("/", "\\");
+				File file = new File(path);
+				file.delete();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
 		advertiseDao.deleteById(id);
-		
+
 	}
 
 }
