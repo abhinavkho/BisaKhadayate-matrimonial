@@ -102,10 +102,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	
 	
 	$("#submituser").click(function() {
-		submitLogin();
+		submitUser();
 	});
 	
-	function submitLogin() {
+	function submitUser() {
 		var isAllValidData=true;
 		var userDetails={};
 		var fields= ["firstName" ,"lastName","emailId","userId","dob"];
@@ -160,6 +160,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			}
 		}
 		
+		userDetails["gotraName"]=$("#gotra option:selected").text();
+		userDetails["samajName"]=$("#samaj option:selected").text();
+		
 		if(isAllValidData)
 		{
 			$("#pageloader").css("display", "block");
@@ -171,9 +174,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				contentType : 'application/json; charset=utf-8',
 			    data : JSON.stringify(userDetails),
 				success : function(result) {
-					/*$("#successmsg").text("");
-					$("#successmsg").text(result);
-					$("#successmsgmodal").modal();*/
 					
 					$("#pageloader").css("display", "none");
 					$("#bodydiv").css("opacity", "1");
@@ -187,5 +187,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		}
 		
 	}
+	
+	$("#samaj").change(function(){
+		var samajId = $("#samaj").val();
+		if(samajId!="")
+		{	
+			$.ajax({
+				url : "getgotralist/"+samajId,
+				type: "POST",
+				success : function(result) {
+					$('#gotra').children('option:not(:first)').remove();
+					for(var gotraCounter=0;gotraCounter<result.length;gotraCounter++)
+					{
+						$('#gotra').append("<option value='"+result[gotraCounter].id+"'>"+result[gotraCounter].name+"</option>");
+					}
+				},
+				error: function (jqXHR, textStatus, errorThrown)
+			    {
+					alert(textStatus);
+			    }
+			});
+	  }
+		
+	});
 
 });

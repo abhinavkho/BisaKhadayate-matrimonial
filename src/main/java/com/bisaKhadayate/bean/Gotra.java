@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Gotra {
@@ -15,6 +16,17 @@ public class Gotra {
 	
 	@Column(name="name" ,nullable = false)
 	private String name;
+	
+	@ManyToOne
+	private Samaj samaj;
+	
+	public Samaj getSamaj() {
+		return samaj;
+	}
+
+	public void setSamaj(Samaj samaj) {
+		this.samaj = samaj;
+	}
 
 	public int getId() {
 		return id;

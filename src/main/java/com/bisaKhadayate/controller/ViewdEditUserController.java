@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.bisaKhadayate.bean.Samaj;
-import com.bisaKhadayate.bean.Gotra;
 import com.bisaKhadayate.bean.User;
 import com.bisaKhadayate.constant.Constant;
 import com.bisaKhadayate.interfaces.services.CommonUserDetailService;
@@ -36,9 +36,6 @@ public class ViewdEditUserController implements Constant {
 	@Qualifier("samaj")
 	List<Samaj> samajList;
 
-	@Autowired
-	@Qualifier("gotra")
-	List<Gotra> gotraList;
 	
 	@Autowired
 	ViewdEditUserService viewdEditUserService;
@@ -63,7 +60,7 @@ public class ViewdEditUserController implements Constant {
 		mv.addObject("imagePathListMap", imagePathListMap);
 		mv.addObject("user", user);
 		mv.addObject("gender", Character.toString(user.getGender()));
-		mv.addObject("gotraList", gotraList);
+		mv.addObject("gotraList", commonUserDetailService.getGotraListBySamajId(user.getSamaj()));
 		mv.addObject("samajList", samajList);
 		mv.addObject("viewProfileadvertiseList", manageAdvertiseService.getImageDetailByAdvertiseTypeAndDate(VIEW_PROFILE_ADDVERTISE));
 		mv.setViewName(EDIT_UESR_DETAILS);
@@ -95,7 +92,7 @@ public class ViewdEditUserController implements Constant {
 		mv.addObject("imagePathListMap", imagePathListMap);
 		mv.addObject("user", user);
 		mv.addObject("gender", Character.toString(user.getGender()));
-		mv.addObject("gotraList", gotraList);
+		mv.addObject("gotraList", commonUserDetailService.getGotraListBySamajId(user.getSamaj()));
 		mv.addObject("samajList", samajList);
 		mv.addObject("viewProfileadvertiseList", manageAdvertiseService.getImageDetailByAdvertiseTypeAndDate(VIEW_PROFILE_ADDVERTISE));
 		mv.setViewName(EDIT_UESR_DETAILS);
@@ -117,7 +114,7 @@ public class ViewdEditUserController implements Constant {
 		mv.addObject("imagePathListMap", imagePathListMap);
 		mv.addObject("user", user);
 		mv.addObject("gender", Character.toString(user.getGender()));
-		mv.addObject("gotraList", gotraList);
+		mv.addObject("gotraList", commonUserDetailService.getGotraListBySamajId(user.getSamaj()));
 		mv.addObject("samajList", samajList);
 		mv.addObject("viewProfileadvertiseList", manageAdvertiseService.getImageDetailByAdvertiseTypeAndDate(VIEW_PROFILE_ADDVERTISE));
 		mv.setViewName(EDIT_UESR_DETAILS);

@@ -92,7 +92,7 @@
 							<select class="form-control fieldui" id="samaj" name="samaj">
 								<option></option>
 								<span th:each="samaj: ${samajList}">
-									<option th:value="${samaj.name}" th:text="${samaj.name}"></option>
+									<option th:value="${samaj.id}" th:text="${samaj.name}"></option>
 						        </span>
 						   </select>
 						</div>
@@ -115,10 +115,7 @@
 					<div class="form-group col-md-12">
 						<label for="gotra">Gotra</label> <select class="gotra" id="gotra"
 							name="gotra">
-							<option></option>
-							<span th:each="gotra: ${gotraList}">
-								<option th:value="${gotra.name}" th:text="${gotra.name}"></option> 
-							</span>
+							<option value="0"></option>
 						</select>
 					</div>
 				</div>

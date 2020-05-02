@@ -32,13 +32,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		$("#lastName").val(searchfilterData.lastName[0]);
 		$("#age").val(searchfilterData.age[0]);
 		$("#agenumber").text($("#age").val());
-		$("#gotra").val(searchfilterData.gotra[0]);
 		$("#samaj").val(searchfilterData.samaj[0]);
 	}
-
+	$("#gender").val(selectedGender);
+	$("#filter_gender").val(selectedGender);
+	
 });
-
-
 
 function loadFullProfile(id)
 {
@@ -106,7 +105,7 @@ function email()
 function getPendingdata(searchType)
 {
 	var searchCriteria={};
-	searchCriteria["gender"] =$("#gender").val();
+	searchCriteria["gender"] =$("#filter_gender").val();
 	searchCriteria["startIndex"] = startIndex;
 	searchCriteria["searchType"] = searchType;
 	if(searchType=="F")
@@ -115,7 +114,6 @@ function getPendingdata(searchType)
 		searchCriteria["lastName"] =  $("#lastName").val();
 		searchCriteria["age"] =  $("#age").val();
 		searchCriteria["samaj"] = $("#samaj").val();
-		searchCriteria["gotra"] =  $("#gotra").val();
 	}
 	$.ajax({
 		url : "getpendingdata",
@@ -125,16 +123,14 @@ function getPendingdata(searchType)
 		success : function(result) {
 			isProcessCompleted=true;
 			startIndex+=10;
-			
 			 var searchDiv = $("#searchresultdiv").html();
-			 
 			 for(var resultCounter=0;result.length>resultCounter;resultCounter++)
 			 {
 				var userDetail=result[resultCounter];
 				var span ="<span>"+
 					"<table style=\"width: 100%\" class=\"resultbox shadow-sm p-3 mb-5 bg-blue rounded\">"+
 						"<tbody><tr>"+
-							"<td rowspan=\"5\" class=\"imageWidth\"><img src=\"i"+userDetail.displayPic+"\" alt=\"no image\" class=\"image_set\" onclick=\"loadFullProfile('11')\"><input type=\"hidden\" id=\"userid\" value=\"11\"></td>"+
+							"<td rowspan=\"5\" class=\"imageWidth\"><img src=\"i"+userDetail.displayPic+"\" alt=\"no image\" class=\"image_set\" onclick=\"loadFullProfile('"+userDetail.id+"')\"><input type=\"hidden\" id=\"userid\" value=\"11\"></td>"+
 							"<td><span>"+userDetail.firstName+"</span> <span>"+userDetail.lastName+"</span></td>"+
 						"</tr>"+
 						"<tr>"+
@@ -144,7 +140,7 @@ function getPendingdata(searchType)
 							"<td>Contact Number : <span>"+userDetail.contactNumber+"</span></td>"+
 						"</tr>"+
 						"<tr>"+
-							"<td>Gotra : <span>"+userDetail.gotra+"</span></td>"+
+							"<td>Gotra : <span>"+userDetail.gotraName==null?"":userDetail.gotraName+"</span></td>"+
 						"</tr>"+
 					"</tbody></table>"+
 				"</span>";

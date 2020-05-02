@@ -5,11 +5,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import org.springframework.util.MultiValueMap;
 
 import com.bisaKhadayate.bean.Samaj;
 import com.bisaKhadayate.bean.Gotra;
@@ -27,11 +32,14 @@ public class CommonUserDetailServiceImpl  implements CommonUserDetailService , C
 	
 	@Autowired
 	SamajDao samajDao;
+	
+	@Autowired
+	JavaMailSender javaMailSender;
 
 	@Override
 	@Transactional
-	public List<Gotra> getGotra() {
-		return (List<Gotra>) gotraDao.findAll();
+	public List<Gotra> getGotraListBySamajId(Integer samajId) {
+		return gotraDao.getGotraListBySamajId(samajId);
 	}
 
 	@Override
@@ -62,4 +70,21 @@ public class CommonUserDetailServiceImpl  implements CommonUserDetailService , C
 		
 		return fileNameList;
 	}
+	
+	@Override
+	public void sendmail(MultiValueMap<String, String> mailContent) {
+		MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+		try {
+			MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+			mimeMessageHelper.setSubject("Test");
+			mimeMessageHelper.setFrom(new InternetAddress("ab9khoti@gmail.com", "abhianv "));
+			mimeMessageHelper.setTo("ab9khoti@gmail.com");
+			mimeMessageHelper.setText("test");
+			javaMailSender.send(mimeMessageHelper.getMimeMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	
 }

@@ -17,12 +17,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	
 	
 	$("#submituser").click(function() {
-		submitLogin();
+		editUser();
 	});
 	
 	
 	
-	function submitLogin() {
+	function editUser() {
 		var isAllValidData=true;
 		var userDetails={};
 		var fields= ["firstName" ,"lastName","dob"];
@@ -77,6 +77,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				$("#dob_err").css("display", "block");
 			}
 		}
+		
+		userDetails["gotraName"]=$("#gotra option:selected").text();
+		userDetails["samajName"]=$("#samaj option:selected").text();
 		
 		if(isAllValidData)
 		{
@@ -135,16 +138,44 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		  }
 		  
 	  });
+	  
+	  
+
+	  function showCross(file) {
+	  	$("#picname").val(file);
+
+	  	if (file == $("#displayPic").val()) {
+	  		$("#fileupload_err").text("You cannot delete your display picture");
+	  	} else {
+	  		$("#deletephoto").submit();
+	  	}
+	  }
+
+
+	  $("#samaj").change(function(){
+	  	var samajId = $("#samaj").val();
+	  	if(samajId!="")
+	  	{	
+	  		$.ajax({
+	  			url : "getgotralist/"+samajId,
+	  			type: "POST",
+	  			success : function(result) {
+	  				$('#gotra').children('option:not(:first)').remove();
+	  				for(var gotraCounter=0;gotraCounter<result.length;gotraCounter++)
+	  				{
+	  					$('#gotra').append("<option value='"+result[gotraCounter].id+"'>"+result[gotraCounter].name+"</option>");
+	  				}
+	  			},
+	  			error: function (jqXHR, textStatus, errorThrown)
+	  		    {
+	  				alert(textStatus);
+	  		    }
+	  		});
+	    }
+	  	
+	  });
+	  
+	  
 
 });
 
-
-function showCross(file) {
-	$("#picname").val(file);
-
-	if (file == $("#displayPic").val()) {
-		$("#fileupload_err").text("You cannot delete your display picture");
-	} else {
-		$("#deletephoto").submit();
-	}
-}
