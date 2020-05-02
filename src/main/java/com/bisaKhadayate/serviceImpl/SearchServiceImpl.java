@@ -110,7 +110,7 @@ public class SearchServiceImpl implements SearchService, Constant {
 				+ user.getColour() + "</td>\r\n" + "						</tr>\r\n"
 				+ "						<tr>\r\n" + "							<th>Samaj</th>\r\n"
 				+ "							<td id=\"samaj_mdl\" style=\" position: relative; left: 20%;\" >"
-				+ user.getSamaj() + "</td>\r\n" + "						</tr>\r\n" + "						<tr>\r\n"
+				+ user.getSamajName() + "</td>\r\n" + "						</tr>\r\n" + "						<tr>\r\n"
 				+ "							<th>Birth place</th>\r\n"
 				+ "							<td id=\"placeOfBirth_mdl\"  style=\" position: relative; left: 20%;\" >"
 				+ user.getPlaceOfBirth() + "</td>\r\n" + "						</tr>\r\n"
@@ -119,7 +119,7 @@ public class SearchServiceImpl implements SearchService, Constant {
 				+ user.getTime() + "</td>\r\n" + "						</tr>\r\n" + "						<tr>\r\n"
 				+ "							<th>Gotra</th>\r\n"
 				+ "							<td id=\"gotra_mdl\" style=\" position: relative; left: 20%;\" >"
-				+ user.getGotra() + "</td>\r\n" + "						</tr>\r\n" + "						<tr>\r\n"
+				+ user.getGotraName() + "</td>\r\n" + "						</tr>\r\n" + "						<tr>\r\n"
 				+ "							<th>Current Address</th>\r\n"
 				+ "							<td id=\"currentAddress_mdl\" style=\" position: relative; left: 20%;\" >"
 				+ user.getCurrentAddress() + "<br/></td>\r\n" + "						</tr>\r\n"
@@ -161,15 +161,15 @@ public class SearchServiceImpl implements SearchService, Constant {
 	@Override
 	@Transactional
 	public List<Map<String, Object>> searchFilterResult(Character gender, boolean isActive, String firstName,
-			String lastName, String samaj, String gotra, int age, int index) {
-		return userDao.searchFilterResult(gender, isActive, firstName, lastName, samaj, gotra, age, index);
+			String lastName, String samaj, int age, int index) {
+		return userDao.searchFilterResult(gender, isActive, firstName, lastName, samaj, age, index);
 	}
 
 	@Override
 	@Transactional
 	public Integer searchFilterResultCount(Character gender, boolean isActive, String firstName, String lastName,
-			String samaj, String gotra, int age) {
-		return userDao.searchFilterResultCount(gender, isActive, firstName, lastName, samaj, gotra, age);
+			String samaj,  int age) {
+		return userDao.searchFilterResultCount(gender, isActive, firstName, lastName, samaj,  age);
 	}
 
 	@Override

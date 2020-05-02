@@ -13,6 +13,11 @@ import javax.persistence.Transient;
 @Entity
 public class User  implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -54,7 +59,10 @@ public class User  implements Serializable{
 	private String highestEducation;
 	
 	@Column
-	private String samaj;
+	private int samaj;
+	
+	@Column(name="samajname")
+	private String samajName;
 	
 	@Column(length = 300)
 	private String occupation;
@@ -78,7 +86,10 @@ public class User  implements Serializable{
 	private Character gender;
 	
 	@Column
-	private String gotra;
+	private int gotra;
+	
+	@Column(name="gotraname")
+	private String gotraName;
 	
 	@Transient
 	private List<String> fileNameList;
@@ -86,8 +97,24 @@ public class User  implements Serializable{
 	@Column(name="displaypic")
 	private String displayPic;
 	
+    
 	
-	
+	public String getSamajName() {
+		return samajName;
+	}
+
+	public void setSamajName(String samajName) {
+		this.samajName = samajName;
+	}
+
+	public String getGotraName() {
+		return gotraName;
+	}
+
+	public void setGotraName(String gotraName) {
+		this.gotraName = gotraName;
+	}
+
 	public String getDisplayPic() {
 		return displayPic;
 	}
@@ -120,11 +147,11 @@ public class User  implements Serializable{
 		this.lastName = lastName;
 	}
 
-	public String getGotra() {
+	public int getGotra() {
 		return gotra;
 	}
 
-	public void setGotra(String gotra) {
+	public void setGotra(int gotra) {
 		this.gotra = gotra;
 	}
 
@@ -256,11 +283,11 @@ public class User  implements Serializable{
 		this.highestEducation = highestEducation;
 	}
 
-	public String getSamaj() {
+	public int getSamaj() {
 		return samaj;
 	}
 
-	public void setSamaj(String samaj) {
+	public void setSamaj(int samaj) {
 		this.samaj = samaj;
 	}
 

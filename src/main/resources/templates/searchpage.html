@@ -42,20 +42,17 @@
 							id="samaj" name="samaj">
 							<option></option>
 							<span th:each="samaj: ${samajList}">
-									<span><option th:value="${samaj.name}" th:text="${samaj.name}"></option></span> 
+									<span><option th:value="${samaj.id}" th:text="${samaj.name}"></option></span> 
 							</span>
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="gotra">Gotra : </label> <select class="form-control"
-							id="gotra" name="gotra">
-							<option></option>
-							<span th:each="gotra: ${gotraList}">
-									<span><option th:value="${gotra.name}" th:text="${gotra.name}"></option></span> 
-							</span>
+						<label for="gender">Gender : </label>
+						 <select class="form-control" id="filter_gender" name="filter_gender">
+							<option  value='M'>Male</option>
+							<option  value='F'>Female</option>
 						</select>
 					</div>
-					<input type="hidden" name="gender" th:value="${gender}" id="gender">
 					<button type="button" class="btn btn-primary" name="btn" value="btn" id="filtersearchbtn">Submit</button>
 				</form>
 				<hr>
@@ -77,7 +74,7 @@
 							th:text="${data.get('contactNumber')}"></span></td>
 					</tr>
 					<tr>
-						<td>Gotra : <span th:text="${data.get('gotra')}"></span></td>
+						<td>Gotra : <span th:text="${data.get('gotraName')}"></span></td>
 					</tr>
 				</table>
 			</span>
@@ -153,7 +150,7 @@
 						</tr>
 						<tr>
 							<th>samaj</th>
-							<td id="samaj_mdl" class="loadfulldata" ></td>
+							<td id="samajName_mdl" class="loadfulldata" ></td>
 						</tr>
 						<tr>
 							<th>Birth place</th>
@@ -165,7 +162,7 @@
 						</tr>
 						<tr>
 							<th>Gotra</th>
-							<td id="gotra_mdl" class="loadfulldata" ></td>
+							<td id="gotraName_mdl" class="loadfulldata" ></td>
 						</tr>
 						<tr>
 							<th>Current Address</th>
@@ -220,6 +217,7 @@
 var searchType = [[${type}]];
 var totalResult= [[${totalResult}]];
 var searchfilterData = [[${searchfilter}]]
+var selectedGender = [[${gender}]]
 </script>
 
 <span th:replace="loader"></span>

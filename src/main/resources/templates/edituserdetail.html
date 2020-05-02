@@ -123,11 +123,11 @@
 			<label for="samaj" class="col-sm-2 col-form-label lableform">Samaj<span class="red">*</span></label>
 			<div class="col-sm-6">
 				<select class="form-control fieldborder"  id="samaj" >
-					<option></option>
+					<option value='0'> </option>
 					<span th:each="samaj: ${samajList}">
-						<span th:switch="*{user.samaj}==${samaj.name} ? ${true}: ${false}">
-							<span th:case="${false}"><option th:value="${samaj.name}" th:text="${samaj.name}"></option></span> 
-							<span th:case="${true}"><option th:value="${samaj.name}" th:text="${samaj.name}" selected ></option></span> 
+						<span th:switch="*{user.samaj}==${samaj.id} ? ${true}: ${false}">
+							<span th:case="${false}"><option th:value="${samaj.id}" th:text="${samaj.name}"></option></span> 
+							<span th:case="${true}"><option th:value="${samaj.id}" th:text="${samaj.name}" selected ></option></span> 
 						</span>
 					</span>
 				</select>
@@ -154,11 +154,11 @@
 			<label for="gotra" class="col-sm-2 col-form-label lableform">Gotra</label>
 			<div class="col-sm-6">
 				<select class="form-control fieldborder"  id="gotra" >
-					<option></option>
+					<option value="0" > </option>
 					<span th:each="gotra: ${gotraList}">
-						<span th:switch="*{user.gotra}==${gotra.name} ? ${true}: ${false}">
-							<span th:case="${false}"><option th:value="${gotra.name}" th:text="${gotra.name}"></option></span> 
-							<span th:case="${true}"><option th:value="${gotra.name}" th:text="${gotra.name}" selected ></option></span> 
+						<span th:switch="*{user.gotra}==${gotra.id} ? ${true}: ${false}">
+							<span th:case="${false}"><option th:value="${gotra.id}" th:text="${gotra.name}"></option></span> 
+							<span th:case="${true}"><option th:value="${gotra.id}" th:text="${gotra.name}" selected ></option></span> 
 						</span>
 					</span>
 				</select>

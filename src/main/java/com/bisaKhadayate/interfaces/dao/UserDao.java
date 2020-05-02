@@ -21,15 +21,15 @@ public interface UserDao extends CrudRepository<User,Integer>  {
 	@Query("SELECT count(*) from User u where u.userId = ?1 ")
 	 Integer checkDuplicateUsername(String username);
 	
-	@Query(value="Select u.id, u.firstName , u.lastName , u.dob , u.gotra , u.contactNumber ,u.gender , u.displayPic from User u where u.gender = ?1 and u.isactives = ?2 limit ?3,10", nativeQuery = true)
+	@Query(value="Select u.id, u.firstName , u.lastName , u.dob , u.gotra , u.contactNumber ,u.gender , u.displayPic ,u.gotraname from User u where u.gender = ?1 and u.isactives = ?2 limit ?3,10", nativeQuery = true)
 	List<Map<String,Object>> searchResult(Character gender,boolean isActive,int index );
 	
-	@Query(value="Select u.id, u.firstName , u.lastName , u.dob , u.gotra , u.contactNumber , u.gender , u.displayPic from User u where u.gender = ?1 and u.isactives = ?2 and"
+	@Query(value="Select u.id, u.firstName , u.lastName , u.dob , u.gotra , u.contactNumber , u.gender , u.displayPic , u.gotraname from User u where u.gender = ?1 and u.isactives = ?2 and"
 			+ " (1=CASE  WHEN ?3='' THEN 1 ELSE u.firstName=?3  END )"
 			+ " and (1=CASE  WHEN ?4='' THEN 1 ELSE u.lastName=?4  END )"
 			+ " and (1=CASE  WHEN ?5='' THEN 1 ELSE u.samaj=?5  END )"
-			+ " and (1=CASE  WHEN ?6='' THEN 1 ELSE u.gotra=?6  END ) and (1=CASE WHEN ?7=0 THEN 1 ELSE floor(datediff(CURDATE(),CONVERT(u.dob, DATE))/365)>=?7 END )limit ?8,10", nativeQuery = true)
-	List<Map<String,Object>> searchFilterResult(Character gender,boolean isActive , String firstName , String lastName ,String samaj , String gotra ,int age,int index );
+			+ " and (1=CASE WHEN ?6=0 THEN 1 ELSE floor(datediff(CURDATE(),CONVERT(u.dob, DATE))/365)>=?6 END )limit ?7,10", nativeQuery = true)
+	List<Map<String,Object>> searchFilterResult(Character gender,boolean isActive , String firstName , String lastName ,String samaj , int age,int index );
 
 	
 	@Query(value="Select count(*) from User u where u.gender = ?1 and u.isactives = ?2 ", nativeQuery = true)
@@ -39,8 +39,8 @@ public interface UserDao extends CrudRepository<User,Integer>  {
 			+ " (1=CASE  WHEN ?3='' THEN 1 ELSE u.firstName=?3  END )"
 			+ " and (1=CASE  WHEN ?4='' THEN 1 ELSE u.lastName=?4  END )"
 			+ " and (1=CASE  WHEN ?5='' THEN 1 ELSE u.samaj=?5  END )"
-			+ " and (1=CASE  WHEN ?6='' THEN 1 ELSE u.gotra=?6  END ) and (1=CASE WHEN ?7=0 THEN 1 ELSE floor(datediff(CURDATE(),CONVERT(u.dob, DATE))/365)>=?7 END )", nativeQuery = true)
-	Integer searchFilterResultCount(Character gender,boolean isActive , String firstName , String lastName ,String samaj , String gotra  ,int age);
+			+ " and (1=CASE WHEN ?6=0 THEN 1 ELSE floor(datediff(CURDATE(),CONVERT(u.dob, DATE))/365)>=?6 END )", nativeQuery = true)
+	Integer searchFilterResultCount(Character gender,boolean isActive , String firstName , String lastName ,String samaj ,int age);
 
 
 }
