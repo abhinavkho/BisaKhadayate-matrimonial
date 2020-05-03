@@ -21,15 +21,17 @@ public class CheckUserSession extends HandlerInterceptorAdapter implements Const
 		System.out.println(request.getContextPath());
 		if (userdetails == null) {
 			isAllow = request.getRequestURI().trim().equalsIgnoreCase("/");
-			if (isAllow)
+			if (isAllow) {
+				response.sendRedirect(request.getContextPath() + "/BisaKhadayateMatrimonial");
 				return true;
+			}
 			for (String url : URL_LIST) {
 				if (request.getRequestURI().contains(url))
 					isAllow = true;
 			}
 		}
 		if (!isAllow)
-			response.sendRedirect(request.getContextPath() + "/");
+			response.sendRedirect(request.getContextPath() + "/BisaKhadayateMatrimonial");
 
 		return isAllow;
 	}

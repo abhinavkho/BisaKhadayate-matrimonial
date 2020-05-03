@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface Constant {
 
-	public final static List<String> URL_LIST = new ArrayList<String>(Arrays.asList("/css","js","/images","/video","/forgotpassword","/passwordchange","/userlogin"));
+	public final static List<String> URL_LIST = new ArrayList<String>(Arrays.asList("/css","js","/images","/video","/forgotpassword","/passwordchange","/userlogin","/BisaKhadayateMatrimonial"));
 	
 	public final static String HOME= "home";
 	

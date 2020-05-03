@@ -41,7 +41,7 @@ public class LoginController implements Constant {
 	@Autowired
 	CommonUserDetailService commonUserDetailService;
 
-	@RequestMapping("/")
+	@RequestMapping("BisaKhadayateMatrimonial")
 	public String loginPage() {
 		return LOGIN;
 	}
