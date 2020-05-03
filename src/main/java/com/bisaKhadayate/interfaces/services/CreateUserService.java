@@ -9,5 +9,7 @@ public interface CreateUserService {
 	Integer checkDuplicateUsername(String username);
 
 	void saveUser(User user);
+	
+	void updateTemporaryPassword(String temporaryPass,String emailId);
 
 }

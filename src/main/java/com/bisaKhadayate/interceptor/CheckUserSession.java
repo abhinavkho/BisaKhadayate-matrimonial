@@ -11,20 +11,26 @@ import com.bisaKhadayate.bean.User;
 import com.bisaKhadayate.constant.Constant;
 
 @Component
-public class CheckUserSession extends HandlerInterceptorAdapter implements Constant  {
+public class CheckUserSession extends HandlerInterceptorAdapter implements Constant {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		User userdetails = (User) request.getSession().getAttribute("userDetails");
-		boolean isAllow=true;		
+		boolean isAllow = true;
+		System.out.println(request.getContextPath());
 		if (userdetails == null) {
-			isAllow=false;
+			isAllow = request.getRequestURI().trim().equalsIgnoreCase("/");
+			if (isAllow)
+				return true;
 			for (String url : URL_LIST) {
-				if (request.getRequestURI().contains(url)) 
-					isAllow= true;
+				if (request.getRequestURI().contains(url))
+					isAllow = true;
 			}
 		}
+		if (!isAllow)
+			response.sendRedirect(request.getContextPath() + "/");
+
 		return isAllow;
 	}
 
@@ -37,6 +43,5 @@ public class CheckUserSession extends HandlerInterceptorAdapter implements Const
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, //
 			Object handler, Exception ex) throws Exception {
 	}
-	
 
 }

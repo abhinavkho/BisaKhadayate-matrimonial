@@ -97,8 +97,19 @@ public class User  implements Serializable{
 	@Column(name="displaypic")
 	private String displayPic;
 	
-    
 	
+	@Column(name="temporarypassword")
+	private String temporaryPassword;
+	
+	
+	public String getTemproryPassword() {
+		return temporaryPassword;
+	}
+
+	public void setTemproryPassword(String temporaryPassword) {
+		this.temporaryPassword = temporaryPassword;
+	}
+
 	public String getSamajName() {
 		return samajName;
 	}

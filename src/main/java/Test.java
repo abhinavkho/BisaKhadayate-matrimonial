@@ -1,8 +1,12 @@
+import java.util.Base64;
 
 public class Test {
 	
 	public static void main(String[] args) {
-	System.out.println(System.getProperty("user.home"));	
+	//System.out.println(System.getProperty("user.home"));
+	String a=Base64.getEncoder().encodeToString("asd".getBytes());
+	System.out.println(a);
+	System.out.println(new String(Base64.getDecoder().decode("cXdlcXdlMQ==")));
 	}
 	
 	

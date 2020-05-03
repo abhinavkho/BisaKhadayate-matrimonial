@@ -1,7 +1,16 @@
 
 <div th:fargment="header" id="mainheader">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-        <a href="#"> <img th:src="@{${user.displayPic}}" width="60" height="60"	class="d-inline-block align-top" alt="no image"></a>
+    
+    <div id="sidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#"><img th:src="@{${user.displayPic}}" width="80" height="80"	class="d-inline-block align-top" alt="no image" ></a>
+  <a href="#"><span id="user_change_password">Change password</span></a>
+  <a href="#" id="logout" class="nav-item nav-link active makecursor" >logout</a>
+</div>
+    
+    
+        <a href="#"> <img th:src="@{${user.displayPic}}" width="60" height="60"	class="d-inline-block align-top" alt="no image" onclick="openNav()"></a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -12,7 +21,6 @@
                 <a id="home" class="nav-item nav-link active makecursor">Home</a>
                 <a id="editviewuser" class="nav-item nav-link active makecursor">View Profile</a>
                 <a id="contactus" class="nav-item nav-link active makecursor">Contact</a>
-                <a id="logout" class="nav-item nav-link active makecursor" >logout</a>
             </div>
 			<div class="navbar-nav ml-auto">
 				<form class="form-inline ml-auto" action="searchpage" method="post" id="searchpageform">
@@ -25,4 +33,40 @@
 			</div>
 		</div>
     </nav> 
+    
+    
+ <!--modal for change password -->
+	<div class="modal fade" id="userChangesPasswordModal">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Password Changes</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="form-group">
+						<input type="password" name="oldpassword" id="old_password" placeholder="Old password" class="form-control">
+					</div>
+					<div class="form-group">
+						<input type="password" name="newpassword" id="new_password" placeholder="New password" class="form-control">
+					</div>
+				</div>
+				<span class="red" id="user_password_change_msg"></span>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="userchangesPassword">Send</button>
+					<button type="button" class="btn success"	data-dismiss="modal">Close</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!--modal for change password -->
+	
+	
 </div>

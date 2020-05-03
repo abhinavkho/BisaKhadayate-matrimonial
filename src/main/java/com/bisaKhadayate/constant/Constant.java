@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface Constant {
 
-	public final static List<String> URL_LIST = new ArrayList<String>(Arrays.asList("/","/css","js","/images"));
+	public final static List<String> URL_LIST = new ArrayList<String>(Arrays.asList("/css","js","/images","/video","/forgotpassword","/passwordchange","/userlogin"));
 	
 	public final static String HOME= "home";
 	
@@ -48,7 +48,11 @@ public interface Constant {
 	
 	public final static String IMAGE_UPLOADED_SUCCESS ="Image uploaded successfully";
 	
+	public final static String PASSWORD_CHANGES_WORNG_MAILID_MESSAGE = "Given emailid or generated password is Wrong";
 	
+	public final static String PASSWORD_CHANGE_MESSAGE="Your password has been changed successfully";
+	
+	public final static String WRONG_OLD_PASSWORD ="Old password is wrong";
 	
 	
 	
