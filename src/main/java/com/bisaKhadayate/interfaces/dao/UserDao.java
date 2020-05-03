@@ -3,6 +3,7 @@ package com.bisaKhadayate.interfaces.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -42,5 +43,21 @@ public interface UserDao extends CrudRepository<User,Integer>  {
 			+ " and (1=CASE WHEN ?6=0 THEN 1 ELSE floor(datediff(CURDATE(),CONVERT(u.dob, DATE))/365)>=?6 END )", nativeQuery = true)
 	Integer searchFilterResultCount(Character gender,boolean isActive , String firstName , String lastName ,String samaj ,int age);
 
+	@Query("SELECT count(*) from User u where u.emailId = ?1 ")
+	Integer userDetailByEmail(String emailId);
+	
+	@Modifying
+	@Query("UPDATE User u SET  u.temporaryPassword = ?1 where u.emailId = ?2")
+	Integer updateTemporaryPassword(String temporaryPass,String emailId);
+	
+	@Query(value="Select count(*) from User u where u.temporaryPassword = ?1 and u.emailId = ?2 ", nativeQuery = true)
+	Integer checkEmailIdAndTempPass(String temporaryPass,String emailId);
 
+	@Modifying
+	@Query("UPDATE User u SET  u.password=?1 , u.temporaryPassword='' where u.emailId = ?2")
+	void updatePassword(String password,String emailId);
+	
+	
+	@Query(value="Select count(*) from User u where u.password = ?1 and u.userId = ?2 ", nativeQuery = true)
+	Integer checkUserPass(String password,String userId);
 }

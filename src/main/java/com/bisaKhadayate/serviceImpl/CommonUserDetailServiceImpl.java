@@ -16,12 +16,12 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MultiValueMap;
 
-import com.bisaKhadayate.bean.Samaj;
 import com.bisaKhadayate.bean.Gotra;
+import com.bisaKhadayate.bean.Samaj;
 import com.bisaKhadayate.bean.User;
 import com.bisaKhadayate.constant.Constant;
-import com.bisaKhadayate.interfaces.dao.SamajDao;
 import com.bisaKhadayate.interfaces.dao.GotraDao;
+import com.bisaKhadayate.interfaces.dao.SamajDao;
 import com.bisaKhadayate.interfaces.services.CommonUserDetailService;
 
 @Service
@@ -85,6 +85,8 @@ public class CommonUserDetailServiceImpl  implements CommonUserDetailService , C
 			e.printStackTrace();
 		}
 	}
+	
+
 
 	
 }

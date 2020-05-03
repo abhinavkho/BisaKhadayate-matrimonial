@@ -1,6 +1,6 @@
 package com.bisaKhadayate.serviceImpl;
 
-import java.util.Random;
+import java.util.Base64;
 
 import javax.transaction.Transactional;
 
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.bisaKhadayate.bean.User;
 import com.bisaKhadayate.constant.Constant;
 import com.bisaKhadayate.interfaces.dao.UserDao;
+import com.bisaKhadayate.interfaces.services.CommonUserDetailService;
 import com.bisaKhadayate.interfaces.services.CreateUserService;
 
 @Service
@@ -17,6 +18,9 @@ public class CreateUserServiceImpl implements CreateUserService, Constant {
 
 	@Autowired
 	UserDao userDao;
+	
+	@Autowired
+	CommonUserDetailService commonUserDetailService;
 
 	@Override
 	@Transactional
@@ -35,17 +39,15 @@ public class CreateUserServiceImpl implements CreateUserService, Constant {
 	public void saveUser(User user) {
 		user.setIsActive(true);
 		user.setIsAdmin(false);
-		user.setPassword(generatePassword());
+		user.setPassword(Base64.getEncoder().encodeToString(user.getUserId().getBytes()));
 		userDao.save(user);
 	}
 
-	public String generatePassword() {
-		int leftLimit = 97; // letter 'a'
-		int rightLimit = 122; // letter 'z'
-		int targetStringLength = 10;
-		Random random = new Random();
-		return random.ints(leftLimit, rightLimit + 1).limit(targetStringLength)
-				.collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString();
+	@Override
+	@Transactional
+	public void updateTemporaryPassword(String temporaryPass, String emailId) {
+		userDao.updateTemporaryPassword(temporaryPass, emailId);
+		
 	}
 
 }
