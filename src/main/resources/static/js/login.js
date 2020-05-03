@@ -75,13 +75,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				}
 				
 				$.ajax({
-					url : "userpasswordchange",
+					url : "passwordchange",
 					type: "POST",
 					contentType : 'application/json; charset=utf-8',
 				    data : JSON.stringify(userDetails),
 					success : function(result) {
                         $("#password_change_msg").text(result.Message);
-                        setTimeout(() => { window.location.href="/"; }, 5000);
+                        setTimeout(() => { window.location.href="/BisaKhadayateMatrimonial"; }, 5000);
 					},
 					error: function (jqXHR, textStatus, errorThrown)
 				    {
