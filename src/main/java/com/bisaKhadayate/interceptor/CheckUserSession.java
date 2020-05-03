@@ -20,11 +20,7 @@ public class CheckUserSession extends HandlerInterceptorAdapter implements Const
 		boolean isAllow = true;
 		System.out.println(request.getContextPath());
 		if (userdetails == null) {
-			isAllow = request.getRequestURI().trim().equalsIgnoreCase("/");
-			if (isAllow) {
-				response.sendRedirect(request.getContextPath() + "/BisaKhadayateMatrimonial");
-				return true;
-			}
+			isAllow = false;
 			for (String url : URL_LIST) {
 				if (request.getRequestURI().contains(url))
 					isAllow = true;
